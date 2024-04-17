@@ -1,0 +1,17 @@
+# Home Page
+* Heading
+-Embarking on a Journey in Web Development 🌐 | Committed to Daily Growth 📚 | Learning and Creating with Passion
+
+# About Page 
+
+  Hello there! I'm Bishal Saud, a passionate web development enthusiast hailing from the beautiful land of Nepal.
+        My journey in the world of coding is not just a profession; it's a perpetual adventure. Each day, I dedicate
+        myself to continuous growth, embracing the challenges and triumphs that come with being a developer.
+
+    With a heart for innovation and an eye for detail, I immerse myself in the ever-evolving realm of web
+        development. Whether it's crafting elegant front-end interfaces or diving into the intricacies of back-end
+        logic, I thrive on turning ideas into functional and visually appealing digital experiences.
+
+    On this #CodeJourney of mine, I'm not just learning; I'm building, creating, and contributing to the dynamic
+        landscape of the web. Join me as I explore the endless possibilities of code and design, driven by an
+        unwavering passion for technology and a commitment to excellence.
