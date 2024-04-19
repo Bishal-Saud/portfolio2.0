@@ -1,7 +1,7 @@
 "use server";
 import path, { resolve } from "path";
 import fs from "fs/promises";
-import os from "os";
+
 import { v4 as uuidv4 } from "uuid";
 import cloudinary from "cloudinary";
 import { Article } from "@/model/article_model";
@@ -12,7 +12,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-async function savePhotosToLocal(file) {
+export async function savePhotosToLocal(file) {
   if (!file) {
     throw new Error("No file uploaded");
   }
@@ -24,7 +24,7 @@ async function savePhotosToLocal(file) {
 
   const uploadDir = path.join(process.cwd(), "public", `/${file.name}`);
   // console.log(uploadDir);
-  fs.writeFile(uploadDir, buffer);
+  await fs.writeFile(uploadDir, buffer);
 
   return { filePath: uploadDir, filename: file.name };
 }
@@ -41,7 +41,10 @@ export default async function uploadPhoto(formData) {
   const file = formData.get("file"); // Assuming only one file is uploaded
 
   const newFiles = await savePhotosToLocal(file);
+  // // await fs.unlink(newFiles.filePath);
+  // console.log(newFiles.filePath);
   const photo = await uploadPhotosToCloudinary(newFiles);
+
   const newArticleData = new Article({
     title: title,
     description: description,
@@ -52,8 +55,9 @@ export default async function uploadPhoto(formData) {
   });
 
   try {
-    await newArticleData.save(); // Save the new Data object to MongoDB
-    return { message: "Photo saved successfully!" };
+    await newArticleData.save();
+    // Save the new Data object to MongoDB
+    return { success: true, message: "Photo saved successfully!" };
   } catch (error) {
     console.error("Error saving photo:", error);
     throw new Error("Failed to save photo to MongoDB");

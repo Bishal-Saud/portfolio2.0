@@ -40,7 +40,7 @@ const Article = ({ img, title, description, id }) => {
       <Image
         src={img}
         alt="article"
-        className="rounded-md"
+        className="rounded-md h-52 overflow-hidden"
         width={500}
         height={100}
         priority
