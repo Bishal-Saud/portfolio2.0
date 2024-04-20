@@ -41,7 +41,7 @@ export default async function uploadPhoto(formData) {
   const file = formData.get("file"); // Assuming only one file is uploaded
 
   const newFiles = await savePhotosToLocal(file);
-  // // await fs.unlink(newFiles.filePath);
+  // // await fs.unlink(newFiles.filePath);functionality
   // console.log(newFiles.filePath);
   const photo = await uploadPhotosToCloudinary(newFiles);
 

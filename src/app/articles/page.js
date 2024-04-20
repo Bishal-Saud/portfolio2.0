@@ -63,24 +63,24 @@ const Article = ({ img, title, description, id }) => {
     </motion.div>
   );
 };
-const FeaturedArticle = ({ img, title, para1, para2 }) => {
-  return (
-    <div className=" bg-light p-2 h-full cursor-pointer w-full col-span-3 rounded-lg shadow-[#24232376] shadow-md">
-      <Image src={img} className="rounded-md" alt="featuredArticle" priority />
-      <h2 className=" font-semibold py-5">{title}</h2>
-      <div className="flex flex-col gap-2 font-mono py-4 h-40 mb-5 overflow-y-auto">
-        <p className=" ">{para1}</p>
-        <p className=" ">{para2}</p>
-      </div>
-      <div className="flex justify-between">
-        <button className="border border-dark px-4 py-1">Save</button>
-        <Link href="/" className="hover:underline">
-          Read More
-        </Link>
-      </div>
-    </div>
-  );
-};
+//
+//   return (
+//     <div className=" bg-light p-2 h-full cursor-pointer w-full col-span-3 rounded-lg shadow-[#24232376] shadow-md">
+//       <Image src={img} className="rounded-md" alt="featuredArticle" priority />
+//       <h2 className=" font-semibold py-5">{title}</h2>
+//       <div className="flex flex-col gap-2 font-mono py-4 h-40 mb-5 overflow-y-auto">
+//         <p className=" ">{para1}</p>
+//         <p className=" ">{para2}</p>
+//       </div>
+//       <div className="flex justify-between">
+//         <button className="border border-dark px-4 py-1">Save</button>
+//         <Link href="/" className="hover:underline">
+//           Read More
+//         </Link>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default function Page() {
   const [showCreateArticle, setShowCreateArticle] = useState(false);
@@ -98,10 +98,6 @@ export default function Page() {
     };
     fetchArticle();
   }, []);
-
-  let image = articleData.map((data) => {
-    return data?.image?.secure_url;
-  });
 
   return (
     <>
@@ -127,26 +123,15 @@ export default function Page() {
         </div>
 
         <div className=" z-0 grid grid-cols-3 border mt-10 gap-10 h-full w-[80%]">
-          {articleData ? (
-            articleData?.map((article) => (
-              <Article
-                key={article._id}
-                id={article._id}
-                title={article.title}
-                description={article.description}
-                img={article?.image?.secure_url}
-              />
-            ))
-          ) : (
-            <>
-              <FeaturedArticle
-                title="What is backend"
-                img={demoImg}
-                para1="Backend is the part where we write logic part of web app."
-                para2="Logics are written here"
-              />
-            </>
-          )}
+          {articleData?.map((article) => (
+            <Article
+              key={article._id}
+              id={article._id}
+              title={article.title}
+              description={article.description}
+              img={article?.image?.secure_url}
+            />
+          ))}
         </div>
       </main>
     </>

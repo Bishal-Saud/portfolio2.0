@@ -15,7 +15,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Experience from "@/Components/Experience";
 
-const ProjectBox = ({ img, alt, className, link }) => {
+const ProjectBox = ({ img, alt, className, link, githubLink }) => {
   return (
     <motion.div
       initial={{ scale: 0.9 }}
@@ -27,7 +27,11 @@ const ProjectBox = ({ img, alt, className, link }) => {
     >
       <Image className=" h-52" src={img} alt={alt} />
       <div className="flex gap-4 p-2">
-        <GithubIcon className="!text-2xl" />
+        <Link href={githubLink} target="_blank">
+          {" "}
+          <GithubIcon className="!text-2xl" />{" "}
+        </Link>
+
         <Link
           href={link}
           target="_blank"
@@ -39,7 +43,7 @@ const ProjectBox = ({ img, alt, className, link }) => {
     </motion.div>
   );
 };
-const ProjectBigBox = ({ img, alt, className, link }) => {
+const ProjectBigBox = ({ img, alt, className, link, githubLink }) => {
   return (
     <motion.div
       initial={{ scale: 0.8 }}
@@ -51,7 +55,10 @@ const ProjectBigBox = ({ img, alt, className, link }) => {
     >
       <Image className=" h-full" src={img} alt={alt} />
       <div className="flex gap-4 p-2">
-        <GithubIcon className="!text-2xl" />
+        <Link href={githubLink} target="_blank">
+          {" "}
+          <GithubIcon className="!text-2xl" />{" "}
+        </Link>
         <Link
           href={link}
           target="_blank"
@@ -79,25 +86,38 @@ export default function Page() {
             img={blogImg}
             link="https://pwskillsblog.netlify.app/"
             alt="project 1"
+            githubLink={
+              "https://github.com/Bishal-Saud/PwSkills.blogs.github.io"
+            }
           />
-          <ProjectBox img={imageShow} link="/" alt="project 2" />
+          <ProjectBox
+            img={imageShow}
+            link="https://imageshow.netlify.app/"
+            alt="project 2"
+            githubLink="https://github.com/Bishal-Saud"
+          />
         </div>
         <ProjectBigBox
           className="h-[50vh]"
           link="https://learning-mangement.netlify.app/"
           img={lmsImg}
           alt="project 3"
+          githubLink="https://github.com/Bishal-Saud?tab=repositories"
         />
         <div className=" mt-10 flex  justify-evenly gap-5  w-2/3 h-1/2">
           <ProjectBox
             img={searchMovieImg}
             link="https://moviesearchassignment.netlify.app/"
             alt="project 4"
+            githubLink={
+              "https://github.com/Bishal-Saud/MileStone-2Exam.Solution/tree/main/Project%202%20Build%20Simple%20Movie%20Search%20Web%20App%20Using%20HTML%2C%20CSS%20%26%20JavaScript%20Only"
+            }
           />
           <ProjectBox
             img={netflixImg}
             link="https://netfliss.netlify.app/"
             alt="project 5"
+            githubLink={"https://github.com/Bishal-Saud"}
           />
         </div>
         <ProjectBigBox
@@ -105,6 +125,7 @@ export default function Page() {
           link="https://pokemonpic.netlify.app/"
           img={pokedexImg}
           alt="project 6"
+          githubLink={"https://github.com/Bishal-Saud/pokedex"}
         />
       </main>
     </>

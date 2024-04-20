@@ -1,6 +1,8 @@
 import { Ysabeau_Office } from "next/font/google";
 import AnimatedText from "./AnimatedText";
 import { easeIn, easeInOut, motion } from "framer-motion";
+import Image from "next/image";
+import certificate from "../../public/images/Skills/certificate.png";
 
 const ExperienceBox = ({ title, description }) => {
   return (
@@ -18,16 +20,18 @@ const ExperienceBox = ({ title, description }) => {
 
 export default function Experience() {
   return (
-    <div className=" m-5 my-10">
+    <div className="m-5 my-10">
       <AnimatedText text="Experience and Certificates" />
       <div className="flex w-full justify-between ">
-        <div className="flex w-1/2 justify-center mt-20">
-          <h2>My Certificates</h2>
-          <div className="grid grid-cols-1 items-center">
-            <div className="border-dark border ">Certificates 11</div>
-            <div className="border-dark border ">Certificates 11</div>
-            <div className="border-dark border ">Certificates 11</div>
+        <div className="flex flex-col w-1/2 justify-center mt-20">
+          <div className="flex justify-center items-center">
+            <div className="border-dark border w-3/4 ">
+              <Image src={certificate} alt="certificate" priority />
+            </div>
           </div>
+          <h2 className="text-4xl p-2 mt-4 font-semibold">
+            Full stack web development Certificate.
+          </h2>
         </div>
         <div className="flex flex-col  pl-5 gap-y-10 justify-center relative items-start mt-20 w-1/2">
           <motion.div
@@ -37,22 +41,18 @@ export default function Experience() {
             className="border-dark  border-l-4 w-2 h-full left-[-10px] absolute"
           />
           <ExperienceBox
-            title="@Designer,Google"
-            description="During my internship, I completed a series of courses and projects
-          that have enriched my programming expertise and provided me with
-          practical software development insights."
+            title="@2023,Joined Pw skills web dev Boot-camp"
+            description="During this  Boot-camp, I completed a series of courses and projects
+            that have enriched my programming expertise and provided me with
+            practical software development insights."
           />
           <ExperienceBox
-            title="@Designer,Google"
-            description="During my internship, I completed a series of courses and projects
-          that have enriched my programming expertise and provided me with
-          practical software development insights."
+            title="@2022-2023,Content Writing,Facebook Marketing"
+            description="Facebook marketing and content writing are vital for online success. Utilizing Facebook's reach and targeted ads alongside compelling content ensures effective audience engagement and growth."
           />
           <ExperienceBox
-            title="@Designer,Google"
-            description="During my internship, I completed a series of courses and projects
-          that have enriched my programming expertise and provided me with
-          practical software development insights."
+            title="@2023,Learning Experience"
+            description="To be honest, I have no big industrial experience yet, but I am ready to gain experience. I have my own learning and researching experiences."
           />
         </div>
       </div>

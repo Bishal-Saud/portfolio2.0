@@ -2,6 +2,7 @@
 import AnimatedText from "@/Components/AnimatedText";
 import { GithubIcon, LinkedInIcon, TwitterIcon } from "@/Components/Icons";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -34,9 +35,27 @@ export default function Page() {
             <div className="p-6">
               <h2 className="text-2xl py-4 font-mono">Find out Here</h2>
               <div className="flex gap-6  items-center justify-center">
-                <GithubIcon />
-                <LinkedInIcon />
-                <TwitterIcon />
+                <Link
+                  className=" text-4xl cursor-pointer"
+                  href="https://github.com/Bishal-Saud"
+                  target="_blank"
+                >
+                  <GithubIcon />
+                </Link>
+                <Link
+                  className=" text-4xl cursor-pointer"
+                  href="https://www.linkedin.com/in/bishal-saud-6a47ba235/"
+                  target="_blank"
+                >
+                  <LinkedInIcon />
+                </Link>
+                <Link
+                  className=" text-4xl cursor-pointer"
+                  href="https://twitter.com/Bishal_Saud05"
+                  target="_blank"
+                >
+                  <TwitterIcon />
+                </Link>
               </div>
             </div>
           </div>

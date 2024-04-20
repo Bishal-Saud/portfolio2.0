@@ -10,6 +10,8 @@ import nodeImg from "../../../public/images/Skills/node.png";
 import reactImg from "../../../public/images/Skills/react-js.png";
 import tailwindImg from "../../../public/images/Skills/tailwindcss.png";
 import expressImg from "../../../public/images/Skills/express.png";
+import reduxToolkit from "../../../public/images/Skills/reduxToolkit.jpg";
+import nextJs from "../../../public/images/Skills/nextJS.png";
 import Experience from "@/Components/Experience";
 
 const SkillBox = ({ img, title, percentage }) => {
@@ -36,7 +38,12 @@ export default function Page() {
           text="My Skills"
           className="!text-6xl !font-serif !text-center"
         />
-        <div className="  flex items-center justify-center  mt-10 gap-10 h-full  w-full">
+
+        <div className="  flex items-center flex-col justify-center  mt-10 gap-10 h-full  w-full">
+          <p className="text-sm text-[#0000007f] hover:text-primary">
+            @Percentages are just ratings by myself, but I believe that if you
+            don't know anything, just Google it. LOL.{" "}
+          </p>
           <div className="flex  w-[80%] flex-col h-full ">
             {/* <h2 className="text-4xl font-serif text-center p-4">My Skills</h2> */}
 
@@ -49,6 +56,12 @@ export default function Page() {
               <SkillBox img={mongoImg} title="MONGO DB" percentage={55} />
               <SkillBox img={tailwindImg} title="TailwindCSS" percentage={60} />
               <SkillBox img={expressImg} title="EXPRESS" percentage={66} />
+              <SkillBox img={nextJs} title="NEXT JS" percentage={70} />
+              <SkillBox
+                img={reduxToolkit}
+                title="Redux Toolkit"
+                percentage={50}
+              />
             </div>
           </div>
         </div>
