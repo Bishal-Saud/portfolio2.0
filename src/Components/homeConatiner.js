@@ -8,7 +8,7 @@ function HomeConatiner({ className }) {
       <Image
         src={owner}
         alt="owner of this website "
-        className={`${className}h-full w-3/4`}
+        className={`${className}2xl:h-full 2xl:w-3/4 xl:h-full xl:w-2/4 `}
         priority
       />
     </div>
