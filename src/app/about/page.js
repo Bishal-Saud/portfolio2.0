@@ -13,7 +13,10 @@ export default function Page() {
 
       <main className="w-full min-h-screen pt-10 flex flex-col  items-center">
         <div className="flex items-center flex-col justify-center w-2/3 ">
-          <AnimatedText className=" pb-5 !text-6xl" text=" About Me" />
+          <AnimatedText
+            className=" pb-5 !text-6xl lg:!text-4xl"
+            text=" About Me"
+          />
           <TextGenerateEffect
             className=" pb-5 !text-lg !font-medium"
             words=" Hello there! I'm Bishal Saud, a passionate web development enthusiast hailing from the beautiful land of Nepal.
