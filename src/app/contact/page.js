@@ -13,8 +13,8 @@ export default function Page() {
       </Head>
       <main className="min-h-screen w-full ">
         <AnimatedText text="Contact Me" className="!text-4xl my-10" />
-        <div className="flex items-start justify-center gap-5 mt-10 w-full  h-full shadow-light shadow-2xl  ">
-          <div className=" bg-light rounded-md flex flex-col items-center justify-end  gap-4  h-full w-1/2">
+        <div className="flex items-start justify-center gap-5 mt-10 w-full  h-full shadow-light shadow-2xl lg:flex-col lg:items-center lg:justify-center ">
+          <div className=" bg-light rounded-md flex flex-col items-center justify-end  gap-4  h-full w-1/2 lg:w-3/4">
             <h2 className="text-4xl">
               Let's Work together, <span className="text-primary">Bishal</span>
             </h2>
@@ -59,8 +59,8 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <form className=" shadow-sm shadow-dark bg-light text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%]">
-            <div className="your name flex gap-5">
+          <form className=" shadow-sm shadow-dark bg-light text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%] md:w-[90%] lg:w-[60%]">
+            <div className="your name flex gap-5 xl:flex-col">
               <div className="name flex flex-col">
                 <label htmlFor="name" className="font-semibold">
                   Your Name{" "}

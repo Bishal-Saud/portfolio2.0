@@ -107,22 +107,25 @@ export default function Page() {
       </Head>
       <main className="min-h-screen w-full flex flex-col items-center py-20">
         {showCreateArticle && <CreateArticle />}
-        <div className="flex items-center justify-center">
-          <AnimatedText text="Our Articles" className="!text-6xl mt-10" />
+        <div className="  flex items-center justify-center">
+          <AnimatedText
+            text="Our Articles"
+            className="!text-6xl !mt-10 lg:!mt-0 lg:!text-4xl"
+          />
           <motion.button
             initial={{ scale: 0.9 }}
             whileHover={{
               scale: 1,
               transition: { duration: 0.5, ease: "easeInOut" },
             }}
-            className=" absolute shadow-sm shadow-dark right-40 p-2"
+            className=" absolute shadow-sm shadow-dark right-40 p-2 lg:right-5 lg:top-10"
             onClick={toggleCreateArticle}
           >
             Add New Article
           </motion.button>
         </div>
 
-        <div className=" z-0 grid grid-cols-3 border mt-10 gap-10 h-full w-[80%]">
+        <div className=" z-0 grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 border mt-10 gap-10 h-full w-[80%]">
           {articleData?.map((article) => (
             <Article
               key={article._id}

@@ -36,11 +36,11 @@ export default function CreateArticle() {
   };
 
   return (
-    <div className=" z-10 flex items-center justify-center fixed  bg-[#00000043] w-full h-full top-0">
+    <div className=" z-10 flex items-center justify-center fixed  bg-[#00000043]  w-full h-full top-0 ">
       <div className="flex  items-center justify-center">
         <form
           ref={formRef}
-          className="border relative w-full text-dark bg-light  border-dark flex flex-col items-center justify-center gap-2 p-5"
+          className="border relative sm:w-[80%] w-full text-dark bg-light shadow-2xl flex flex-col items-center justify-center gap-2 p-5 rounded-md"
         >
           <button
             className="absolute top-1 left-[93%]"
@@ -73,7 +73,7 @@ export default function CreateArticle() {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className="flex flex-col cursor-pointer ">
+          <div className="flex flex-col cursor-pointer w-full">
             <label htmlFor="thumbnail" className="font-semibold ">
               Upload Thumbnail
             </label>

@@ -36,18 +36,18 @@ export default function Page() {
       <main className="min-h-screen w-full  ">
         <AnimatedText
           text="My Skills"
-          className="!text-6xl !font-serif !text-center"
+          className="!text-6xl !font-serif !text-center md:!text-4xl"
         />
 
         <div className="  flex items-center flex-col justify-center  mt-10 gap-10 h-full  w-full">
-          <p className="text-sm text-[#0000007f] hover:text-primary">
+          <p className="text-sm text-[#0000007f] hover:text-primary lg:px-4">
             @Percentages are just ratings by myself, but I believe that if you
             don't know anything, just Google it. LOL.{" "}
           </p>
           <div className="flex  w-[80%] flex-col h-full ">
             {/* <h2 className="text-4xl font-serif text-center p-4">My Skills</h2> */}
 
-            <div className="skills mt-5 grid grid-cols-4 justify-items-center gap-10">
+            <div className="skills mt-5 grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-10">
               <SkillBox img={htmlImg} title="HTML" percentage={90} />
               <SkillBox img={cssImg} title="CSS" percentage={80} />
               <SkillBox img={jsImg} title="JS" percentage={70} />

@@ -1,5 +1,6 @@
 "use client";
-
+import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -11,6 +12,31 @@ import {
   TwitterIcon,
 } from "./Icons";
 import { useState } from "react";
+
+const CustomMobileLink = ({ href, title, className = "", toggle }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    toggle();
+    router.push(href);
+  };
+  return (
+    <button
+      href={href}
+      className={`${className} relative group my-2`}
+      onClick={handleClick}
+    >
+      {title}
+      <span
+        className={`h-1 inline-block bg-dark absolute left-0 -bottom-0.5 hover:bottom-b-4 group-hover:w-full transition-[width] ease duration-300${
+          router.asPath === href ? "w-full" : "w-0"
+        }  dark:bg-light`}
+      >
+        &nbsp;
+      </span>
+    </button>
+  );
+};
 
 const MotionLi = ({ icon }) => {
   return (
@@ -27,25 +53,21 @@ const MotionLi = ({ icon }) => {
   );
 };
 const NavLink = ({ href, title, className }) => {
+  const router = useRouter();
   return (
-    <Link
-      href={href}
-      className={`${className} font-semibold  hover:border-b-4 border-dark transition-all ease-in-out lg:text-xl `}
-    >
+    <Link href={href} className={`${className} relative group`}>
       {title}
+      <span
+        className={`h-1 inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+          router.asPath === href ? "w-full" : "w-0"
+        } dark:bg-light`}
+      >
+        &nbsp;
+      </span>
     </Link>
   );
 };
-const NavMobileLink = ({ href, title, className }) => {
-  return (
-    <Link
-      href={href}
-      className={`${className} font-semibold  hover:border-b-4 border-dark transition-all ease-in-out lg:text-2xl `}
-    >
-      {title}
-    </Link>
-  );
-};
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -108,20 +130,50 @@ export default function Navbar() {
         <motion.div
           initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
           animate={{ scale: 1, opacity: 1 }}
-          className=" min-w-[75vw] flex-col fixed flex z-30 items-center text-light dark:text-dark justify-between top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32 "
+          className=" min-w-[75vw] flex-col fixed flex z-30 items-center text-light dark:text-dark justify-between top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32 md:h-[80%] md:w-[80%] md:justify-center xl:flex 2xl:hidden"
         >
           <div>
             <nav className="flex flex-col gap-5">
-              <NavLink href="/" title="Home" className="mx-4" />
-              <NavLink href="/about" title="About" className="mx-4" />
-              <NavLink href="/projects" title="Projects" className="mx-4" />
-              <NavLink href="/contact" title="Contact" className="mx-4" />
-              <NavLink href="/articles" title="Articles" className="mx-4" />
-              <NavLink href="/skills" title="Skills" className="ml-4" />
+              <CustomMobileLink
+                toggle={handleChange}
+                href="/"
+                title="Home"
+                className=""
+              />
+              <CustomMobileLink
+                toggle={handleChange}
+                href="/about"
+                title="About"
+                className=""
+              />
+              <CustomMobileLink
+                toggle={handleChange}
+                href="/projects"
+                title="Projects"
+                className=""
+              />
+              <CustomMobileLink
+                toggle={handleChange}
+                href="/contact"
+                title="Contact"
+                className=""
+              />
+              <CustomMobileLink
+                toggle={handleChange}
+                href="/articles"
+                title="Articles"
+                className=""
+              />
+              <CustomMobileLink
+                toggle={handleChange}
+                href="/skills"
+                title="Skills"
+                className=""
+              />
             </nav>
           </div>
           <div className="w-full">
-            <ul className="flex gap-5 mt-10 items-center justify-center ">
+            <ul className="flex gap-5 md:gap-2 mt-10 items-center justify-center ">
               <MotionLi icon={<GithubIcon />} />
               <MotionLi icon={<TwitterIcon />} />
               <MotionLi icon={<PinterestIcon />} />
