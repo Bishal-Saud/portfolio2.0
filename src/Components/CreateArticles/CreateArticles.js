@@ -36,11 +36,11 @@ export default function CreateArticle() {
   };
 
   return (
-    <div className=" z-10 flex items-center justify-center fixed  bg-[#00000043]  w-full h-full top-0 ">
+    <div className=" z-10 flex items-center justify-center fixed  bg-[#00000043] text-dark dark:text-light w-full h-full top-0 ">
       <div className="flex  items-center justify-center">
         <form
           ref={formRef}
-          className="border relative sm:w-[80%] w-full text-dark bg-light shadow-2xl flex flex-col items-center justify-center gap-2 p-5 rounded-md"
+          className="border relative sm:w-[80%] w-full text-dark dark:text-light bg-light dark:bg-dark shadow-2xl flex flex-col items-center justify-center gap-2 p-5 rounded-md"
         >
           <button
             className="absolute top-1 left-[93%]"
@@ -55,7 +55,7 @@ export default function CreateArticle() {
               Your Title{" "}
             </label>
             <input
-              className="p-2 bg-light shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
+              className="p-2 bg-light dark:bg-dark dark:shadow-light shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
               type="text"
               placeholder="Enter your title"
               value={title}
@@ -67,7 +67,7 @@ export default function CreateArticle() {
               Your Description{" "}
             </label>
             <textarea
-              className="p-2 h-28 w-full bg-light resize-none shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
+              className="p-2 h-28 w-full bg-light resize-none shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
               placeholder="Enter your description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -78,7 +78,7 @@ export default function CreateArticle() {
               Upload Thumbnail
             </label>
             <input
-              className="p-2  cursor-pointer  bg-light shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
+              className="p-2  cursor-pointer  bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
               type="file"
               accept="image/*"
               onChange={handleImageChange} // Handle file selection
@@ -86,7 +86,7 @@ export default function CreateArticle() {
           </div>
           <button
             onClick={articleDetails}
-            className="p-2  bg-light shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
+            className="p-2 dark:bg-dark dark:shadow-light bg-light shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
           >
             Submit
           </button>

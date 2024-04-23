@@ -20,7 +20,7 @@ const ExperienceBox = ({ title, description }) => {
 
 export default function Experience() {
   return (
-    <div className="m-5 my-10">
+    <div className="m-5 my-10 text-dark dark:text-light">
       <AnimatedText
         text="Experience and Certificates"
         className="lg:!text-4xl"
@@ -41,7 +41,7 @@ export default function Experience() {
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             transition={{ duration: 0.9, ease: "easeInOut" }}
-            className="border-dark  border-l-4 w-2 h-full left-[-10px] absolute lg:hidden"
+            className="border-dark dark:border-light border-l-4 w-2 h-full left-[-10px] absolute lg:hidden"
           />
           <ExperienceBox
             title="@2023,Joined Pw skills web dev Boot-camp"

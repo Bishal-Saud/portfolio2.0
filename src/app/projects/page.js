@@ -23,7 +23,7 @@ const ProjectBox = ({ img, alt, className, link, githubLink }) => {
         scale: 1,
         transition: { duration: 0.5, ease: "easeInOut" },
       }}
-      className={`rounded-lg flex items-center justify-between  flex-col  border-r-8 border-b-8 2xl:w-1/2 lg:w-[90%] h-full border-dark overflow-hidden cursor-pointer ${className}`}
+      className={`rounded-lg flex items-center justify-between  flex-col  border-r-8 border-b-8 2xl:w-1/2 lg:w-[90%] h-full border-dark dark:border-light *:overflow-hidden shadow-sm dark:shadow-white cursor-pointer ${className}`}
     >
       <Image className=" h-52" src={img} alt={alt} />
       <div className="flex gap-4 p-2">
@@ -51,7 +51,7 @@ const ProjectBigBox = ({ img, alt, className, link, githubLink }) => {
         scale: 1,
         transition: { duration: 0.5, ease: "easeInOut" },
       }}
-      className={`rounded-lg flex items-center justify-between  flex-col  border-r-8 border-b-8 2xl:w-1/2 lg:w-[90%] h-full border-dark overflow-hidden cursor-pointer ${className}`}
+      className={`rounded-lg flex items-center justify-between  flex-col  border-r-8 border-b-8 2xl:w-1/2 lg:w-[90%] h-full border-dark dark:border-light overflow-hidden cursor-pointer ${className}`}
     >
       <Image className=" h-full" src={img} alt={alt} />
       <div className="flex gap-4 p-2">
@@ -77,7 +77,7 @@ export default function Page() {
         <title>Bishal \ Projects Page</title>
         <meta name="projects page" content="any description" />
       </Head>
-      <main className="w-full min-h-screen flex items-center flex-col gap-4 mb-10 ">
+      <main className="w-full min-h-screen flex items-center flex-col gap-4 mb-10 text-dark dark:text-light ">
         <div className=" w-full flex flex-col justify-center">
           <AnimatedText
             className=" !text-6xl pt-10 md:!text-4xl"

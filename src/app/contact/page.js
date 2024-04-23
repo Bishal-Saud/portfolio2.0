@@ -11,10 +11,10 @@ export default function Page() {
         <title>Bishal \ Contact Page</title>
         <meta name="Contact page" content="any description" />
       </Head>
-      <main className="min-h-screen w-full ">
+      <main className="min-h-screen w-full text-dark dark:text-white ">
         <AnimatedText text="Contact Me" className="!text-4xl my-10" />
         <div className="flex items-start justify-center gap-5 mt-10 w-full  h-full shadow-light shadow-2xl lg:flex-col lg:items-center lg:justify-center ">
-          <div className=" bg-light rounded-md flex flex-col items-center justify-end  gap-4  h-full w-1/2 lg:w-3/4">
+          <div className=" rounded-md flex flex-col items-center justify-end  gap-4  h-full w-1/2 lg:w-3/4">
             <h2 className="text-4xl">
               Let's Work together, <span className="text-primary">Bishal</span>
             </h2>
@@ -59,14 +59,14 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <form className=" shadow-sm shadow-dark bg-light text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%] md:w-[90%] lg:w-[60%]">
+          <form className=" shadow-sm shadow-dark dark:shadow-light dark:text-white  text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%] md:w-[90%] lg:w-[60%]">
             <div className="your name flex gap-5 xl:flex-col">
               <div className="name flex flex-col">
                 <label htmlFor="name" className="font-semibold">
                   Your Name{" "}
                 </label>
                 <input
-                  className="p-2 bg-light shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
+                  className="p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
                   type="text"
                   placeholder="Enter your name"
                 />
@@ -76,7 +76,7 @@ export default function Page() {
                   Phone Number{" "}
                 </label>
                 <input
-                  className="border border-dark p-2 bg-light shadow-dark outline-none border-none shadow-sm mt-2"
+                  className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
                   type="text"
                   placeholder="Enter your number"
                 />
@@ -88,7 +88,7 @@ export default function Page() {
                 Email{" "}
               </label>
               <input
-                className="border border-dark p-2 bg-light shadow-dark outline-none border-none shadow-sm mt-2"
+                className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
                 type="text"
                 placeholder="Enter your email"
               />
@@ -98,7 +98,7 @@ export default function Page() {
                 Subject{" "}
               </label>
               <input
-                className="border border-dark p-2 bg-light shadow-dark outline-none border-none shadow-sm mt-2"
+                className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
                 type="text"
                 placeholder="Enter your subject"
               />
@@ -108,13 +108,13 @@ export default function Page() {
                 Message{" "}
               </label>
               <textarea
-                className="border border-dark h-28 resize-none p-2 bg-light shadow-dark outline-none border-none shadow-sm mt-2"
+                className="border border-dark h-28 resize-none p-2 bg-light dark:bg-dark dark:shadow-light shadow-dark outline-none border-none shadow-sm mt-2"
                 placeholder="Message"
               />
             </div>
             <button
               type="submit"
-              className="shadow-sm hover:shadow-xl transition-all ease-out duration-300  shadow-dark mt-4 p-2 text-xl font-semibold"
+              className="shadow-sm hover:shadow-xl transition-all ease-out duration-300  shadow-dark dark:bg-light dark:text-dark dark:shadow-light mt-4 p-2 text-xl font-semibold"
             >
               Submit
             </button>

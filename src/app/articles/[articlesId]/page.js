@@ -73,18 +73,18 @@ export default function Page(props) {
 
   return (
     <>
-      <div className="min-h-screen w-full m-5">
+      <div className="min-h-screen w-full m-5 text-dark dark:text-light  ">
         <h2 className=" font-bold mt-10 text-6xl text-center">
           Update Article Details
         </h2>
-        <div className="flex items-center m-auto border border-[#2020202a] p-6 h-2/3 w-1/2 mt-10 flex-col gap-2 justify-center shadow-dark shadow-md ">
+        <div className="flex items-center m-auto border border-[#2020202a] p-6 h-2/3 w-1/2 mt-10 flex-col gap-2 justify-center shadow-dark dark:shadow-light  shadow-md ">
           <form>
             <div className="flex flex-col  gap-4">
               <label htmlFor="title" className="font-semibold  ">
                 Title{" "}
               </label>
               <input
-                className="p-2 text-2xl rounded-md w-[40rem] h-[5rem]"
+                className="p-2 mb-5 text-2xl text:dark dark:text-light bg-light dark:bg-dark rounded-md w-[40rem] h-[5rem] dark:border-light dark:border"
                 type="text"
                 name="title"
                 value={title} // Set input value to state variable
@@ -97,7 +97,7 @@ export default function Page(props) {
                 Description{" "}
               </label>
               <textarea
-                className="resize-none p-2 w-[40rem] h-[10rem]"
+                className="resize-none p-2 w-[40rem] h-[10rem] dark:text-light bg-light dark:bg-dark dark:border"
                 type="text"
                 name="description"
                 value={description} // Set input value to state variable
@@ -110,7 +110,7 @@ export default function Page(props) {
                 Upload your image
               </label>
               <input
-                className="p-2 w-[40rem] h-[5rem]"
+                className="p-2 w-[40rem] h-[5rem] dark:text-light bg-light dark:bg-dark "
                 type="file"
                 name="image"
                 accept="image/*"
@@ -120,13 +120,13 @@ export default function Page(props) {
           </form>
           <div className="flex gap-4 mt-10">
             <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              className="bg-gray-300 dark:bg-light dark:text-dark hover:bg-gray-400 dark:hover:text-light dark:hover:bg-dark dark:hover:border text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
               onClick={updateArticle}
             >
               Update
             </button>
             <Link
-              className="underline opacity-80 hover:opacity-100 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              className="underline opacity-80 hover:opacity-100 text-gray-800 dark:text-light font-bold py-2 px-4 rounded inline-flex items-center"
               href="/articles"
             >
               {" "}

@@ -9,9 +9,11 @@ import {
   LinkedInIcon,
   MoonIcon,
   PinterestIcon,
+  SunIcon,
   TwitterIcon,
 } from "./Icons";
 import { useState } from "react";
+import useThemeSwitcher from "./hooks/useThemeSwitcher";
 
 const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   const router = useRouter();
@@ -38,7 +40,7 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   );
 };
 
-const MotionLi = ({ icon }) => {
+const MotionLi = ({ icon, link }) => {
   return (
     <motion.li
       initial={{ scale: 0.9 }}
@@ -48,7 +50,9 @@ const MotionLi = ({ icon }) => {
       }}
       className=" cursor-pointer lg:w-[2rem]"
     >
-      {icon}
+      <Link href={link} target="_blank">
+        {icon}
+      </Link>
     </motion.li>
   );
 };
@@ -70,12 +74,18 @@ const NavLink = ({ href, title, className }) => {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [mode, setMode] = useThemeSwitcher();
   function handleChange() {
     setIsOpen(!isOpen);
   }
+  const toggleTheme = () => {
+    setMode(mode === "light" ? "dark" : "light");
+  };
   return (
-    <header className="relative  flex 2xl:justify-between xl:justify-between px-5 items-center ">
+    <header
+      className="relative  flex 2xl:justify-between xl:justify-between px-5 items-center text-dark dark:text-light
+     "
+    >
       <button
         className="hidden flex-col mt-5 items-center justify-center lg:flex"
         onClick={handleChange}
@@ -96,7 +106,7 @@ export default function Navbar() {
           }`}
         ></span>
       </button>
-      <div className="lg:hidden border rounded-full border-black flex items-center justify-center p-2 bg-dark text-light text-center font-semibold h-16 w-16  hover:bg-light  hover:border-dark  hover:text-dark transition-all duration-700 ease-in-out mt-1">
+      <div className="lg:hidden border rounded-full border-black flex items-center justify-center p-2 bg-dark text-light text-center font-semibold h-16 w-16  hover:bg-light  hover:border-dark  hover:text-dark dark:bg-light dark:text-dark  dark:hover:border-light dark:hover:bg-dark dark:hover:text-light transition-all duration-700 ease-in-out mt-1">
         <a
           href="../../public/images/personal/resume.pdf"
           download="resume.pdf"
@@ -107,12 +117,39 @@ export default function Navbar() {
       </div>
       <div className="lg:hidden absolute top-20 left-[2.5rem]">
         <ul className="flex gap-5 flex-col text-3xl">
-          <MotionLi icon={<GithubIcon />} />
-          <MotionLi icon={<TwitterIcon />} />
-          <MotionLi icon={<PinterestIcon />} />
-          <MotionLi icon={<LinkedInIcon />} />
-          <MotionLi icon={<DribbbleIcon />} />
-          <MotionLi icon={<MoonIcon />} />
+          <MotionLi
+            icon={<GithubIcon />}
+            link="https://github.com/Bishal-Saud?tab=repositories"
+          />
+          <MotionLi
+            icon={<TwitterIcon />}
+            link="https://twitter.com/Bishal_Saud05"
+          />
+          <MotionLi
+            icon={<PinterestIcon />}
+            link="https://in.pinterest.com/bishalsaud15/"
+          />
+          <MotionLi
+            icon={<LinkedInIcon />}
+            link="https://www.linkedin.com/in/bishal-saud-6a47ba235/"
+          />
+          <MotionLi
+            icon={<DribbbleIcon />}
+            link="https://dribbble.com/Bishal15"
+          />
+
+          <button
+            className={`rounded-full p-1 flex items-center justify-center ${
+              mode === "light" ? "text-dark" : "text-dark bg-light"
+            }`}
+            onClick={toggleTheme}
+          >
+            {mode === "dark" ? (
+              <SunIcon className="fill-dark" />
+            ) : (
+              <MoonIcon className="fill-dark" />
+            )}
+          </button>
         </ul>
       </div>
       <div className="lg:hidden">
@@ -174,12 +211,38 @@ export default function Navbar() {
           </div>
           <div className="w-full">
             <ul className="flex gap-5 md:gap-2 mt-10 items-center justify-center ">
-              <MotionLi icon={<GithubIcon />} />
-              <MotionLi icon={<TwitterIcon />} />
-              <MotionLi icon={<PinterestIcon />} />
-              <MotionLi icon={<LinkedInIcon />} />
-              <MotionLi icon={<DribbbleIcon />} />
-              <MotionLi icon={<MoonIcon />} />
+              <MotionLi
+                icon={<GithubIcon />}
+                link="https://github.com/Bishal-Saud?tab=repositories"
+              />
+              <MotionLi
+                icon={<TwitterIcon />}
+                link="https://twitter.com/Bishal_Saud05"
+              />
+              <MotionLi
+                icon={<PinterestIcon />}
+                link="https://in.pinterest.com/bishalsaud15/"
+              />
+              <MotionLi
+                icon={<LinkedInIcon />}
+                link="https://www.linkedin.com/in/bishal-saud-6a47ba235/"
+              />
+              <MotionLi
+                icon={<DribbbleIcon />}
+                link="https://dribbble.com/Bishal15"
+              />
+              <button
+                className={`rounded-full p-1 flex items-center justify-center lg:text-light lg:dark:text-dark ${
+                  mode === "light" ? "text-dark" : "text-dark bg-light"
+                }`}
+                onClick={toggleTheme}
+              >
+                {mode === "dark" ? (
+                  <SunIcon className="fill-dark" />
+                ) : (
+                  <MoonIcon className="fill-dark" />
+                )}
+              </button>
             </ul>
           </div>
         </motion.div>

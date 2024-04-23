@@ -32,9 +32,9 @@ const Article = ({ img, title, description, id }) => {
         scale: 1,
         transition: { duration: 0.5, ease: "easeInOut" },
       }}
-      className="relative bg-light p-2 h-full w-full cursor-pointer rounded-lg shadow-[#24232342] shadow-xl"
+      className="relative bg-light dark:bg-dark p-2 h-full w-full cursor-pointer rounded-lg shadow-[#24232342] dark:shadow-light dark:shadow-sm shadow-xl"
     >
-      <div className="absolute right-0 bg-light p-2">
+      <div className="absolute right-0 bg-light dark:bg-dark p-2">
         <DeleteArticle id={id} />
       </div>
       <Image
@@ -105,9 +105,9 @@ export default function Page() {
         <title>Bishal \ Article Page</title>
         <meta name="article page" content="any description" />
       </Head>
-      <main className="min-h-screen w-full flex flex-col items-center py-20">
+      <main className="min-h-screen w-full flex flex-col items-center py-20 text-dark dark:text-light">
         {showCreateArticle && <CreateArticle />}
-        <div className="  flex items-center justify-center">
+        <div className=" flex items-center justify-center">
           <AnimatedText
             text="Our Articles"
             className="!text-6xl !mt-10 lg:!mt-0 lg:!text-4xl"
@@ -118,14 +118,14 @@ export default function Page() {
               scale: 1,
               transition: { duration: 0.5, ease: "easeInOut" },
             }}
-            className=" absolute shadow-sm shadow-dark right-40 p-2 lg:right-5 lg:top-10"
+            className=" absolute shadow-sm shadow-dark dark:shadow-light right-40 p-2 lg:right-5 lg:top-10"
             onClick={toggleCreateArticle}
           >
             Add New Article
           </motion.button>
         </div>
 
-        <div className=" z-0 grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 border mt-10 gap-10 h-full w-[80%]">
+        <div className=" z-0 grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 mt-10 gap-10 h-full w-[80%]">
           {articleData?.map((article) => (
             <Article
               key={article._id}

@@ -33,14 +33,14 @@ export default function Page() {
         <title>Bishal \ Skills Page</title>
         <meta name="skills page" content="any description" />
       </Head>
-      <main className="min-h-screen w-full  ">
+      <main className="min-h-screen w-full text-dark dark:text-light ">
         <AnimatedText
           text="My Skills"
           className="!text-6xl !font-serif !text-center md:!text-4xl"
         />
 
         <div className="  flex items-center flex-col justify-center  mt-10 gap-10 h-full  w-full">
-          <p className="text-sm text-[#0000007f] hover:text-primary lg:px-4">
+          <p className="text-sm text-[#0000007f] dark:text-[#ffffff7f] hover:text-primary lg:px-4">
             @Percentages are just ratings by myself, but I believe that if you
             don't know anything, just Google it. LOL.{" "}
           </p>

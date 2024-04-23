@@ -11,7 +11,7 @@ export default function Page() {
         <meta name="about page" content="any description" />
       </Head>
 
-      <main className="w-full min-h-screen pt-10 flex flex-col  items-center">
+      <main className="w-full min-h-screen pt-10 flex flex-col  items-center text-dark dark:text-light">
         <div className="flex items-center flex-col justify-center w-2/3 ">
           <AnimatedText
             className=" pb-5 !text-6xl lg:!text-4xl"
@@ -24,8 +24,8 @@ export default function Page() {
         myself to continuous growth, embracing the challenges and triumphs that come with being a developer."
           />
         </div>
-        <div className="w-2/3 lg:flex-col  flex justify-between border border-r-8 border-b-8  rounded-3xl  border-[#35374B] lg:px-10 md:px-2">
-          <div className=" 2xl:w-1/2 xl:w-full p-4 justify-center flex items-center flex-col  border-r-4 rounded-full border-[#35374B]">
+        <div className="w-2/3 lg:flex-col  flex justify-between border border-r-8 border-b-8  rounded-3xl  border-[#35374B] lg:px-10 md:px-2 dark:border-light">
+          <div className=" 2xl:w-1/2 xl:w-full p-4 justify-center flex items-center flex-col  border-r-4 rounded-full border-[#35374B] dark:border-light">
             <h2 className="2xl:py-5 lg:py-2 text-[#FF3EA5]">{"<CODE/>"}</h2>
             <p className="  2xl:px-5 lg:px-2 lg:text-sm sm:text-[10px] ">
               Coding, on the other hand, is the implementation of the design
@@ -36,7 +36,7 @@ export default function Page() {
               life and enabling the intended functionality.
             </p>
           </div>
-          <div className="2xl:w-1/2 xl:w-full border-l-4 rounded-full border-[#35374B] p-4 flex justify-center items-center flex-col">
+          <div className="2xl:w-1/2 xl:w-full border-l-4 rounded-full border-[#35374B] p-4 flex justify-center items-center flex-col dark:border-light ">
             <h2 className="2xl:py-5 lg:py-2 text-[#54c1cb]"> {"<DESIGN/>"}</h2>
             <p className=" 2xl:px-5 lg:px-2 lg:text-sm sm:text-[10px] ">
               Designing involves creating a blueprint for a product or system,
