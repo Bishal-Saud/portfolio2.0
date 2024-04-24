@@ -12,7 +12,12 @@ import CrossIcon from "@/Components/Icons";
 import DeleteArticle from "@/Components/DeleteArticle/deleteArticle";
 
 const ArticleData = async () => {
-  let res = await fetch("http://localhost:3000/api/article", {
+  // let res = await fetch("http://localhost:3000/api/article", {
+  //   method: "GET",
+  //   cache: "no-cache",
+  // });
+  // deploying
+  let res = await fetch(`${process.env.FRONTEND_URL}/api/article`, {
     method: "GET",
     cache: "no-cache",
   });
@@ -85,6 +90,7 @@ const Article = ({ img, title, description, id }) => {
 export default function Page() {
   const [showCreateArticle, setShowCreateArticle] = useState(false);
   const [articleData, setArticleData] = useState([]);
+  const [loading, setLoading] = useState(true); // State variable for loading
   // Function to toggle visibility of CreateArticle component
 
   const toggleCreateArticle = () => {
@@ -125,17 +131,21 @@ export default function Page() {
           </motion.button>
         </div>
 
-        <div className=" z-0 grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 mt-10 gap-10 h-full w-[80%]">
-          {articleData?.map((article) => (
-            <Article
-              key={article._id}
-              id={article._id}
-              title={article.title}
-              description={article.description}
-              img={article?.image?.secure_url}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className=" z-0 grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 mt-10 gap-10 h-full w-[80%]">
+            {articleData?.map((article) => (
+              <Article
+                key={article._id}
+                id={article._id}
+                title={article.title}
+                description={article.description}
+                img={article?.image?.secure_url}
+              />
+            ))}
+          </div>
+        )}
       </main>
     </>
   );
