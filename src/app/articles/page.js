@@ -17,7 +17,7 @@ const ArticleData = async () => {
   //   cache: "no-cache",
   // });
   // deploying
-  let res = await fetch(`${process.env.FRONTEND_URL}/api/article`, {
+  let res = await fetch(`${process.env.FRONTEND_URL}api/article`, {
     method: "GET",
     cache: "no-cache",
   });
