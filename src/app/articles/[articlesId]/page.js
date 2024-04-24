@@ -17,7 +17,9 @@ export default function Page(props) {
     try {
       // let result = await fetch(`http://localhost:3000/api/article/${id}`);
       // deployment
-      let result = await fetch(`${process.env.FRONTEND_URL}/api/article/${id}`);
+      let result = await fetch(
+        `https://bishalsaud.vercel.app/api/article/${id}`
+      );
       result = await result.json();
       if (result.success) {
         let data = result.data;
@@ -35,20 +37,6 @@ export default function Page(props) {
     setImage(file);
   };
 
-  // const updateArticle = async () => {
-  //   try {
-  //     let result = await fetch(`http://localhost:3000/api/article/${id}`, {
-  //       method: "PUT",
-  //       body: JSON.stringify({ title, description, image }),
-  //     });
-  //     result = await result.json();
-  //     if (result.success) {
-  //       alert("Article Updated");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error updating article:", error);
-  //   }
-  // };
   const updateArticle = async () => {
     try {
       const formData = new FormData();
@@ -61,7 +49,7 @@ export default function Page(props) {
 
       console.log(formData, "formData");
       let result = await fetch(
-        `${process.env.FRONTEND_URL}/api/article/${id}`,
+        `https://bishalsaud.vercel.app/api/article/${id}`,
         {
           method: "PUT",
           body: formData,
