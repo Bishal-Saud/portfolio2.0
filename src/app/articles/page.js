@@ -16,8 +16,8 @@ const ArticleData = async () => {
   //   method: "GET",
   //   cache: "no-cache",
   // });
-  // deploying
-  let res = await fetch(`${process.env.FRONTEND_URL}api/article`, {
+  // deploying with manual url
+  let res = await fetch(`https://bishalsaud.vercel.app/api/article`, {
     method: "GET",
     cache: "no-cache",
   });
