@@ -16,7 +16,8 @@ export default function Page() {
         <div className="flex items-start justify-center gap-5 mt-10 w-full  h-full shadow-light shadow-2xl lg:flex-col lg:items-center lg:justify-center ">
           <div className=" rounded-md flex flex-col items-center justify-end  gap-4  h-full w-1/2 lg:w-3/4">
             <h2 className="text-4xl">
-              Let's Work together, <span className="text-primary">Bishal</span>
+              Let&apos;s Work together,{" "}
+              <span className="text-primary">Bishal</span>
             </h2>
             <div className="flex items-start justify-start flex-col pt-9">
               <p className="text-xl font-semibold">

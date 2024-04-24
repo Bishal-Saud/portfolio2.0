@@ -42,8 +42,9 @@ export default function Page() {
         <div className="  flex items-center flex-col justify-center  mt-10 gap-10 h-full  w-full">
           <p className="text-sm text-[#0000007f] dark:text-[#ffffff7f] hover:text-primary lg:px-4">
             @Percentages are just ratings by myself, but I believe that if you
-            don't know anything, just Google it. LOL.{" "}
+            don&apos;t know anything, just Google it. LOL.{" "}
           </p>
+
           <div className="flex  w-[80%] flex-col h-full ">
             {/* <h2 className="text-4xl font-serif text-center p-4">My Skills</h2> */}
 
