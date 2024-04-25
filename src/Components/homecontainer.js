@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import owner from "../../public/images/personal/owner.png";
-function HomeConatiner({ className }) {
+function HomeContainer({ className }) {
   return (
     <div className="flex rounded-md  items-start justify-start ">
       <Image
@@ -15,4 +15,4 @@ function HomeConatiner({ className }) {
   );
 }
 
-export default HomeConatiner;
+export default HomeContainer;

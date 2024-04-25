@@ -9,19 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tabler/icons-react": "^3.2.0",
     "aws4": "^1.12.0",
     "cloudinary": "^2.1.0",
-    "clsx": "^2.1.0",
-    "framer-motion": "^11.0.8",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.1.7",
     "mongoose": "^8.2.1",
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18",
-    "sharp": "^0.33.3",
-    "tailwind-merge": "^2.2.1",
+    "tailwind-merge": "^2.3.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/node": "20.12.7",
+    "@types/react": "18.2.79",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",

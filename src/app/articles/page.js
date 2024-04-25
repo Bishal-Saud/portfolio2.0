@@ -10,14 +10,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import CrossIcon from "@/Components/Icons";
 import DeleteArticle from "@/Components/DeleteArticle/deleteArticle";
-import { FRONTEND_URL } from "@/untill/frontEnd_Url";
-
+import { BentoGrid } from "@/Components/ui/bento-grid";
+import { cn } from "@/untill/cn";
+export const FRONTEND_URL = "http://localhost:3000/";
 console.log(FRONTEND_URL, "FRONTEND_URL");
 const ArticleData = async () => {
-  // let res = await fetch("http://localhost:3000/api/article", {
-  //   method: "GET",
-  //   cache: "no-cache",
-  // });
   // deploying with manual url
   let res = await fetch(`${FRONTEND_URL}/api/article`, {
     method: "GET",
@@ -27,47 +24,43 @@ const ArticleData = async () => {
   return res.data;
 };
 
-const Article = ({ img, title, description, id }) => {
+const BentoGridItem = ({ className, title, description, id, icon }) => {
   const router = useRouter();
   function articleDataforEachID() {
     router.push(`/articles/${id}`, { scroll: false });
   }
   return (
-    <motion.div
-      initial={{ scale: 0.9 }}
-      whileInView={{
-        scale: 1,
-        transition: { duration: 0.5, ease: "easeInOut" },
-      }}
-      className="relative bg-light dark:bg-dark p-2 h-full w-full cursor-pointer rounded-lg shadow-[#24232342] dark:shadow-light dark:shadow-sm shadow-xl"
+    <div
+      className={cn(
+        "row-span-1 relative rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
+        className
+      )}
     >
-      <div className="absolute right-0 bg-light dark:bg-dark p-2">
+      <div className="absolute top-0 right-0  p-2">
         <DeleteArticle id={id} />
       </div>
-      <Image
-        src={img}
-        alt="article"
-        className="rounded-md h-52 overflow-hidden"
-        width={500}
-        height={100}
-        priority
-      />
-      <h2 className=" font-semibold py-5">{title}</h2>
-      <div className="flex flex-col gap-2 font-mono py-4 h-40 mb-5 overflow-y-auto">
-        <p className=" ">{description}</p>
+      <div className="group-hover/bento:translate-x-2  transition duration-200  lg:overflow-scroll">
+        <Image src={icon} width={1000} height={100} priority alt={title} />
+        <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
+          {title}
+        </div>
+        <div className="font-sans my-5  font-normal text-neutral-600 text-xs dark:text-neutral-300">
+          {description}
+        </div>
+
+        <div className="flex gap-2 justify-between">
+          <button
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            onClick={articleDataforEachID}
+          >
+            Edit
+          </button>
+          <Link href="/" className="text-blue-800 font-semibold underline">
+            Read More
+          </Link>
+        </div>
       </div>
-      <div className="flex justify-between">
-        <button
-          className="border border-dark px-4 py-1"
-          onClick={articleDataforEachID}
-        >
-          Edit
-        </button>
-        <Link href="/" className="hover:underline">
-          Read More
-        </Link>
-      </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -113,8 +106,8 @@ export default function Page() {
           </motion.button>
         </div>
 
-        <div className=" z-0 grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 mt-10 gap-10 h-full w-[80%]">
-          {articleData?.map((article) => (
+        {/* <div className=" z-0 grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 mt-10 gap-10 h-full w-[80%]"> */}
+        {/* {articleData?.map((article) => (
             <Article
               key={article._id}
               id={article._id}
@@ -122,8 +115,20 @@ export default function Page() {
               description={article.description}
               img={article?.image?.secure_url}
             />
+          ))} */}
+        <BentoGrid className="max-w-4xl mx-auto">
+          {articleData?.map((article, i) => (
+            <BentoGridItem
+              key={article._id}
+              id={article._id}
+              title={article.title}
+              description={article.description}
+              icon={article?.image?.secure_url}
+              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+            />
           ))}
-        </div>
+        </BentoGrid>
+        {/* </div> */}
       </main>
     </>
   );

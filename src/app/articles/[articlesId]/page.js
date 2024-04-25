@@ -1,4 +1,5 @@
 "use client";
+import { FRONTEND_URL } from "@/untill/frontEnd_Url";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -17,7 +18,7 @@ export default function Page(props) {
     try {
       // let result = await fetch(`http://localhost:3000/api/article/${id}`);
       // deployment
-      let result = await fetch(`${process.env.FRONTEND_URL}api/article/${id}`);
+      let result = await fetch(`${FRONTEND_URL}/api/article/${id}`);
       result = await result.json();
       if (result.success) {
         let data = result.data;
@@ -46,7 +47,7 @@ export default function Page(props) {
       }
 
       console.log(formData, "formData");
-      let result = await fetch(`${process.env.FRONTEND_URL}api/article/${id}`, {
+      let result = await fetch(`${FRONTEND_URL}/api/article/${id}`, {
         method: "PUT",
         body: formData,
       });

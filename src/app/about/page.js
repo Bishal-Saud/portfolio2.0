@@ -2,6 +2,7 @@
 import AnimatedText from "@/Components/AnimatedText";
 import { TextGenerateEffect } from "@/Components/Text-generate";
 import Head from "next/head";
+import { TypewriterEffectSmooth } from "../../Components/ui/typewriter-effect";
 
 export default function Page() {
   return (
