@@ -12,8 +12,8 @@ import CrossIcon from "@/Components/Icons";
 import DeleteArticle from "@/Components/DeleteArticle/deleteArticle";
 import { BentoGrid } from "@/Components/ui/bento-grid";
 import { cn } from "@/untill/cn";
-export const FRONTEND_URL = "http://localhost:3000/";
-console.log(FRONTEND_URL, "FRONTEND_URL");
+import { FRONTEND_URL } from "@/untill/frontEnd_Url";
+
 const ArticleData = async () => {
   // deploying with manual url
   let res = await fetch(`${FRONTEND_URL}/api/article`, {
