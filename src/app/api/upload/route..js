@@ -18,6 +18,8 @@ export async function POST(res, req) {
       path.join(process.cwd(), "public/uploads/" + filename),
       buffer
     );
+    // Delete file from local folder
+    await unlink(path.join(process.cwd(), "public/uploads/", filename));
     return NextResponse.json({ Message: "Success", status: 201 });
   } catch (error) {
     console.log("Error occured ", error);

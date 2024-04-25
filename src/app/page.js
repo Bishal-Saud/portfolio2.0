@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="home" content="Bishal saud Home page" />
       </Head>
       <main className=" flex min-h-screen flex-col items-center justify-between my-10  text-dark dark:text-light">
-        <div className="flex  border 2xl:gap-5 xl:gap-2 rounded-xl 2xl:p-5 h-1/3 shadow-xl xl:p-1 2xl:w-2/3  xl:w-3/4 md:w-full justify-center items-center 2xl:flex-row xl:flex-row lg:flex-col  ">
+        <div className="flex  border 2xl:gap-5 xl:gap-2 rounded-xl 2xl:p-5 h-1/3 shadow-xl xl:p-1 2xl:w-2/3  xl:w-3/4 md:w-full justify-center items-center 2xl:flex-row xl:flex-row lg:flex-col md:border-none ">
           <div className="bg-gradient-to-r to-emerald-600 from-sky-400 flex justify-center items-center  2xl:h-full xl:h-2/3 xl:w-2/3 ">
             <HomeConatiner />
           </div>

@@ -17,13 +17,11 @@ export default function Page(props) {
     try {
       // let result = await fetch(`http://localhost:3000/api/article/${id}`);
       // deployment
-      let result = await fetch(
-        `https://bishalsaud.vercel.app/api/article/${id}`
-      );
+      let result = await fetch(`${process.env.FRONTEND_URL}api/article/${id}`);
       result = await result.json();
       if (result.success) {
         let data = result.data;
-        // Set state variables to fetched data
+        // Set state variables to fetched data manual
         setTitle(data.title);
         setDescription(data.description);
         setImage(data.image);
@@ -48,13 +46,10 @@ export default function Page(props) {
       }
 
       console.log(formData, "formData");
-      let result = await fetch(
-        `https://bishalsaud.vercel.app/api/article/${id}`,
-        {
-          method: "PUT",
-          body: formData,
-        }
-      );
+      let result = await fetch(`${process.env.FRONTEND_URL}api/article/${id}`, {
+        method: "PUT",
+        body: formData,
+      });
       result = await result.json();
       if (result.success) {
         alert("Article Updated");

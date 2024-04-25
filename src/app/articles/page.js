@@ -10,14 +10,16 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import CrossIcon from "@/Components/Icons";
 import DeleteArticle from "@/Components/DeleteArticle/deleteArticle";
+import { FRONTEND_URL } from "@/untill/frontEnd_Url";
 
+console.log(FRONTEND_URL, "FRONTEND_URL");
 const ArticleData = async () => {
   // let res = await fetch("http://localhost:3000/api/article", {
   //   method: "GET",
   //   cache: "no-cache",
   // });
   // deploying with manual url
-  let res = await fetch(`https://bishalsaud.vercel.app/api/article`, {
+  let res = await fetch(`${FRONTEND_URL}/api/article`, {
     method: "GET",
     cache: "no-cache",
   });
@@ -68,24 +70,6 @@ const Article = ({ img, title, description, id }) => {
     </motion.div>
   );
 };
-//
-//   return (
-//     <div className=" bg-light p-2 h-full cursor-pointer w-full col-span-3 rounded-lg shadow-[#24232376] shadow-md">
-//       <Image src={img} className="rounded-md" alt="featuredArticle" priority />
-//       <h2 className=" font-semibold py-5">{title}</h2>
-//       <div className="flex flex-col gap-2 font-mono py-4 h-40 mb-5 overflow-y-auto">
-//         <p className=" ">{para1}</p>
-//         <p className=" ">{para2}</p>
-//       </div>
-//       <div className="flex justify-between">
-//         <button className="border border-dark px-4 py-1">Save</button>
-//         <Link href="/" className="hover:underline">
-//           Read More
-//         </Link>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default function Page() {
   const [showCreateArticle, setShowCreateArticle] = useState(false);
