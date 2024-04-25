@@ -29,17 +29,18 @@ const BentoGridItem = ({ className, title, description, id, icon }) => {
   function articleDataforEachID() {
     router.push(`/articles/${id}`, { scroll: false });
   }
+
   return (
     <div
       className={cn(
-        "row-span-1 relative rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
+        "row-span-1 relative rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col  space-y-4 ",
         className
       )}
     >
       <div className="absolute top-0 right-0  p-2">
         <DeleteArticle id={id} />
       </div>
-      <div className="group-hover/bento:translate-x-2  transition duration-200  lg:overflow-scroll">
+      <div className=" group-hover/bento:translate-x-2  transition duration-200  lg:overflow-scroll">
         <Image src={icon} width={1000} height={100} priority alt={title} />
         <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
           {title}
@@ -48,7 +49,7 @@ const BentoGridItem = ({ className, title, description, id, icon }) => {
           {description}
         </div>
 
-        <div className="flex gap-2 justify-between">
+        <div className="flex  gap-2 justify-between items-end">
           <button
             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
             onClick={articleDataforEachID}
@@ -124,7 +125,7 @@ export default function Page() {
               title={article.title}
               description={article.description}
               icon={article?.image?.secure_url}
-              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+              className={i === 3 || i === 6 ? "2xl:col-span-2" : ""}
             />
           ))}
         </BentoGrid>

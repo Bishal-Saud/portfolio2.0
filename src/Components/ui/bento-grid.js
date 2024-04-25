@@ -3,13 +3,6 @@ import Image from "next/image";
 
 export const BentoGrid = ({ className, children }) => {
   return (
-    <div
-      className={cn(
-        "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
-        className
-      )}
-    >
-      {children}
-    </div>
+    <div className={cn("grid  grid-cols-2 gap-2", className)}>{children}</div>
   );
 };
