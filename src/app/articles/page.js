@@ -125,7 +125,7 @@ export default function Page() {
               title={article.title}
               description={article.description}
               icon={article?.image?.secure_url}
-              className={i === 3 || i === 6 ? "2xl:col-span-2" : ""}
+              className={i === 3 || i === 6 ? "xl:col-span-2" : ""}
             />
           ))}
         </BentoGrid>

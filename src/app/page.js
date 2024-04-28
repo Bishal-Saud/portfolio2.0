@@ -5,6 +5,7 @@ import Link from "next/link";
 import { TypewriterEffectSmooth } from "../Components/ui/typewriter-effect";
 import AnimatedText from "../Components/AnimatedText";
 import HomeContainer from "../Components/homecontainer";
+import { LampDemo } from "@/Components/ui/lamp";
 
 export default function Home() {
   const words = [
@@ -25,7 +26,7 @@ export default function Home() {
         <title>Bishal Saud \ Home Page</title>
         <meta name="home" content="Bishal saud Home page" />
       </Head>
-      <main className=" flex min-h-screen flex-col items-center justify-between my-10  text-dark dark:text-light">
+      <main className="flex min-h-screen flex-col items-center justify-center my-10 lg:mb-5 text-dark dark:text-light">
         <div className="flex  border 2xl:gap-5 xl:gap-2 rounded-xl 2xl:p-5 h-1/3 shadow-xl xl:p-1 2xl:w-2/3  xl:w-3/4 md:w-full justify-center items-center 2xl:flex-row xl:flex-row lg:flex-col md:border-none ">
           <div className="bg-gradient-to-r   to-emerald-600 from-sky-400 flex justify-center items-center  2xl:h-full xl:h-2/3 xl:w-2/3 ">
             <HomeContainer />
@@ -45,7 +46,7 @@ export default function Home() {
             <div className="pt-10 pb-5 flex justify-start items-center gap-4">
               <button
                 className=" flex items-center gap-2 border border-dark transition-all ease-in-out duration-300 bg-dark text-light hover:bg-light hover:text-dark dark:bg-light dark:text-black dark:hover:text-light 
-              hover:border-light dark:hover:bg-dark  font-semibold h-12 w-28 px-2 rounded-md py-2"
+              hover:border-light dark:hover:bg-dark  sm:text-sm  font-semibold h-12 w-28 px-2 rounded-md py-2"
               >
                 <Link href="/contact">
                   Contact <span className="">Me</span>
@@ -53,13 +54,13 @@ export default function Home() {
               </button>
 
               <Link
-                className="font-semibold  transition-all ease-in-out duration-300 hover:underline"
+                className="font-semibold  sm:text-sm transition-all ease-in-out duration-300 hover:underline"
                 href="/projects"
               >
                 Projects
               </Link>
               <Link
-                className="font-semibold  transition-all ease-in-out duration-300 underline"
+                className="font-semibold sm:text-sm  transition-all ease-in-out duration-300 underline"
                 href="/articles"
               >
                 Create Articles
@@ -68,6 +69,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <LampDemo />
     </>
   );
 }
