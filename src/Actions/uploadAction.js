@@ -28,7 +28,7 @@ export async function savePhotosToLocal(file) {
   // await fs.writeFile(uploadDir, buffer);
   const tempDir = os.tmpdir();
   const uploadDir = path.join(tempDir, `${name}.${ext}`);
-  console.log(uploadDir);
+  // console.log(uploadDir);
 
   fs.writeFile(uploadDir, buffer);
   return { filePath: uploadDir, filename: file.name };
@@ -59,8 +59,12 @@ export default async function uploadPhoto(formData) {
     },
   });
 
+  // const image = await newArticleData.image;
+  // console.log(newArticleData.image);
+
   try {
-    await newArticleData.save();
+    await Article.insertMany(newArticleData);
+    // await newArticleData.save();
     // Save the new Data object to MongoDB
     return { success: true, message: "Photo saved successfully!" };
   } catch (error) {
