@@ -1,7 +1,7 @@
 "use server";
 import path, { resolve } from "path";
 import fs from "fs/promises";
-
+import os from "os";
 import { v4 as uuidv4 } from "uuid";
 import cloudinary from "cloudinary";
 import { Article } from "@/model/article_model";
@@ -22,10 +22,15 @@ export async function savePhotosToLocal(file) {
   const name = uuidv4();
   const ext = file.type.split("/")[1];
 
-  const uploadDir = path.join(process.cwd(), "public", `/${file.name}`);
-  // console.log(uploadDir);
-  await fs.writeFile(uploadDir, buffer);
+  // Doesn't work in vercel
+  // const uploadDir = path.join(process.cwd(), "public", `/${file.name}`);
+  // // console.log(uploadDir);
+  // await fs.writeFile(uploadDir, buffer);
+  const tempDir = os.tmpdir();
+  const uploadDir = path.join(tempDir, `${name}.${ext}`);
+  console.log(uploadDir);
 
+  fs.writeFile(uploadDir, buffer);
   return { filePath: uploadDir, filename: file.name };
 }
 async function uploadPhotosToCloudinary(newFiles) {
