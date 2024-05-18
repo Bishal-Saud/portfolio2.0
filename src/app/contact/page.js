@@ -1,10 +1,57 @@
 "use client";
+"use client";
 import AnimatedText from "@/Components/AnimatedText";
 import { GithubIcon, LinkedInIcon, TwitterIcon } from "@/Components/Icons";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Page() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        alert("Email sent successfully!");
+        // setFormData({
+        //   name: "",
+        //   phone: "",
+        //   email: "",
+        //   subject: "",
+        //   message: "",
+        // });
+      } else {
+        alert("Failed to send email.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error sending email.");
+    }
+  };
+
   return (
     <>
       <Head>
@@ -60,13 +107,19 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <form className=" shadow-sm shadow-dark dark:shadow-light dark:text-white  text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%] md:w-[90%] lg:w-[60%]">
+          <form
+            onSubmit={handleSubmit}
+            className=" shadow-sm shadow-dark dark:shadow-light dark:text-white  text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%] md:w-[90%] lg:w-[60%]"
+          >
             <div className="your name flex gap-5 xl:flex-col">
               <div className="name flex flex-col">
                 <label htmlFor="name" className="font-semibold">
                   Your Name{" "}
                 </label>
                 <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
                   type="text"
                   placeholder="Enter your name"
@@ -77,6 +130,9 @@ export default function Page() {
                   Phone Number{" "}
                 </label>
                 <input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
                   type="text"
                   placeholder="Enter your number"
@@ -89,6 +145,9 @@ export default function Page() {
                 Email{" "}
               </label>
               <input
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
                 type="text"
                 placeholder="Enter your email"
@@ -99,6 +158,9 @@ export default function Page() {
                 Subject{" "}
               </label>
               <input
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
                 type="text"
                 placeholder="Enter your subject"
@@ -109,6 +171,9 @@ export default function Page() {
                 Message{" "}
               </label>
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="border border-dark h-28 resize-none p-2 bg-light dark:bg-dark dark:shadow-light shadow-dark outline-none border-none shadow-sm mt-2"
                 placeholder="Message"
               />
