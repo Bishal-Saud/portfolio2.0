@@ -1,5 +1,5 @@
 "use server";
-import path, { resolve } from "path";
+import path from "path";
 import fs from "fs/promises";
 import os from "os";
 import { v4 as uuidv4 } from "uuid";
@@ -24,17 +24,14 @@ export async function savePhotosToLocal(formData) {
   const name = uuidv4();
   const ext = file.type.split("/")[1];
 
-  // Doesn't work in vercel
-  // const uploadDir = path.join(process.cwd(), "public", `/${file.name}`);
-  // // console.log(uploadDir);
-  // await fs.writeFile(uploadDir, buffer);
+  // Use os.tmpdir() for temporary storage
   const tempDir = os.tmpdir();
   const uploadDir = path.join(tempDir, `${name}.${ext}`);
-  // console.log(uploadDir);
 
-  fs.writeFile(uploadDir, buffer);
+  await fs.writeFile(uploadDir, buffer);
   return { filePath: uploadDir, filename: file.name };
 }
+
 async function uploadPhotosToCloudinary(newFiles) {
   return cloudinary.v2.uploader.upload(newFiles.filePath, {
     folder: "nextjs_upload",
@@ -42,31 +39,28 @@ async function uploadPhotosToCloudinary(newFiles) {
 }
 
 export default async function uploadPhoto(formData) {
-  // Retrieve title and description from FormData
-  const title = formData.get("title");
-  const description = formData.get("description");
-  // const file = formData.get("file"); // Assuming only one file is uploaded
-
-  const newFiles = await savePhotosToLocal(formData);
-
-  const photo = await uploadPhotosToCloudinary(newFiles);
-
-  const newArticleData = new Article({
-    title: title,
-    description: description,
-    image: {
-      public_id: photo.public_id,
-      secure_url: photo.secure_url,
-    },
-  });
-
   try {
+    const title = formData.get("title");
+    const description = formData.get("description");
+
+    const newFiles = await savePhotosToLocal(formData);
+
+    const photo = await uploadPhotosToCloudinary(newFiles);
+
+    const newArticleData = new Article({
+      title: title,
+      description: description,
+      image: {
+        public_id: photo.public_id,
+        secure_url: photo.secure_url,
+      },
+    });
+
     await Article.insertMany(newArticleData);
-    // await newArticleData.save();
-    // Save the new Data object to MongoDB
     return { success: true, message: "Photo saved successfully!" };
   } catch (error) {
-    console.error("Error saving photo:", error);
-    throw new Error("Failed to save photo to MongoDB");
+    console.error("Error uploading photo:", error.message);
+    console.error("Stack trace:", error.stack);
+    throw new Error("Failed to upload photo");
   }
 }

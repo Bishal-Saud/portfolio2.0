@@ -36,13 +36,13 @@ export default function Page() {
 
       if (res.ok) {
         alert("Email sent successfully!");
-        // setFormData({
-        //   name: "",
-        //   phone: "",
-        //   email: "",
-        //   subject: "",
-        //   message: "",
-        // });
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
       } else {
         alert("Failed to send email.");
       }
