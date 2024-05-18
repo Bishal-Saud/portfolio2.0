@@ -12,7 +12,9 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-export async function savePhotosToLocal(file) {
+export async function savePhotosToLocal(formData) {
+  const file = formData.get("file");
+
   if (!file) {
     throw new Error("No file uploaded");
   }
@@ -43,11 +45,10 @@ export default async function uploadPhoto(formData) {
   // Retrieve title and description from FormData
   const title = formData.get("title");
   const description = formData.get("description");
-  const file = formData.get("file"); // Assuming only one file is uploaded
+  // const file = formData.get("file"); // Assuming only one file is uploaded
 
-  const newFiles = await savePhotosToLocal(file);
-  // // await fs.unlink(newFiles.filePath);functionality
-  // console.log(newFiles.filePath);
+  const newFiles = await savePhotosToLocal(formData);
+
   const photo = await uploadPhotosToCloudinary(newFiles);
 
   const newArticleData = new Article({
@@ -58,9 +59,6 @@ export default async function uploadPhoto(formData) {
       secure_url: photo.secure_url,
     },
   });
-
-  // const image = await newArticleData.image;
-  // console.log(newArticleData.image);
 
   try {
     await Article.insertMany(newArticleData);
