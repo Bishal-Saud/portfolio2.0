@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import uploadPhoto from "@/Actions/uploadPhoto";
+import uploadPhoto from "@/Actions/uploadAction";
 import CrossIcon from "../Icons";
 
 export default function CreateArticle() {
