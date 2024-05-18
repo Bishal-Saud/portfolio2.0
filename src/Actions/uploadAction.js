@@ -12,7 +12,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-export async function savePhotosToLocal(formData) {
+async function savePhotosToLocal(formData) {
   const file = formData.get("file");
 
   if (!file) {
@@ -24,7 +24,6 @@ export async function savePhotosToLocal(formData) {
   const name = uuidv4();
   const ext = file.type.split("/")[1];
 
-  // Use os.tmpdir() for temporary storage
   const tempDir = os.tmpdir();
   const uploadDir = path.join(tempDir, `${name}.${ext}`);
 
@@ -44,12 +43,11 @@ export default async function uploadPhoto(formData) {
     const description = formData.get("description");
 
     const newFiles = await savePhotosToLocal(formData);
-
     const photo = await uploadPhotosToCloudinary(newFiles);
 
     const newArticleData = new Article({
-      title: title,
-      description: description,
+      title,
+      description,
       image: {
         public_id: photo.public_id,
         secure_url: photo.secure_url,
@@ -61,6 +59,10 @@ export default async function uploadPhoto(formData) {
   } catch (error) {
     console.error("Error uploading photo:", error.message);
     console.error("Stack trace:", error.stack);
-    throw new Error("Failed to upload photo");
+    return {
+      success: false,
+      message: "Failed to upload photo",
+      error: error.message,
+    };
   }
 }

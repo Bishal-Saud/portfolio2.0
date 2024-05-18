@@ -1,43 +1,47 @@
 "use client";
 import { useRef, useState } from "react";
-import uploadPhoto from "@/Actions/uploadAction";
+import uploadPhoto from "@/Actions/uploadPhoto";
 import CrossIcon from "../Icons";
 
 export default function CreateArticle() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null); // Initialize image state as null
+  const [image, setImage] = useState(null);
   const [showCreateArticle, setShowCreateArticle] = useState(true);
   const formRef = useRef();
 
   const articleDetails = async (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
-    formData.append("file", image); // Append the selected file to FormData
-    formData.append("title", title); // Append the title
-    formData.append("description", description); // Append the description
+    formData.append("file", image);
+    formData.append("title", title);
+    formData.append("description", description);
 
     try {
       const res = await uploadPhoto(formData);
-      if (res.success) {
-        alert("Article Created SuccessFully");
+      if (res && res.success) {
+        alert(res.message);
+      } else {
+        alert(res ? res.message : "Failed to upload image. Please try again.");
       }
     } catch (error) {
       console.error("Error uploading image:", error);
+      alert("Failed to upload image. Please try again.");
     }
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]; // Get the first selected file
+    const file = e.target.files[0];
     setImage(file);
   };
+
   const handleCrossIconClick = () => {
-    setShowCreateArticle(false); // Hide the CreateArticle component
+    setShowCreateArticle(false);
   };
 
   return (
-    <div className=" z-10 flex items-center justify-center fixed  bg-[#00000043] text-dark dark:text-light w-full h-full top-0 ">
-      <div className="flex  items-center justify-center">
+    <div className="z-10 flex items-center justify-center fixed bg-[#00000043] text-dark dark:text-light w-full h-full top-0">
+      <div className="flex items-center justify-center">
         <form
           ref={formRef}
           className="border relative sm:w-[80%] w-full text-dark dark:text-light bg-light dark:bg-dark shadow-2xl flex flex-col items-center justify-center gap-2 p-5 rounded-md"
@@ -52,7 +56,7 @@ export default function CreateArticle() {
 
           <div className="flex flex-col">
             <label htmlFor="title" className="font-semibold">
-              Your Title{" "}
+              Your Title
             </label>
             <input
               className="p-2 bg-light dark:bg-dark dark:shadow-light shadow-dark outline-none border-none shadow-sm mt-2 rounded-sm"
@@ -64,7 +68,7 @@ export default function CreateArticle() {
           </div>
           <div className="flex flex-col">
             <label htmlFor="description" className="font-semibold">
-              Your Description{" "}
+              Your Description
             </label>
             <textarea
               className="p-2 h-28 w-full bg-light resize-none shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
@@ -74,14 +78,14 @@ export default function CreateArticle() {
             />
           </div>
           <div className="flex flex-col cursor-pointer w-full">
-            <label htmlFor="thumbnail" className="font-semibold ">
+            <label htmlFor="thumbnail" className="font-semibold">
               Upload Thumbnail
             </label>
             <input
-              className="p-2  cursor-pointer  bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
+              className="p-2 cursor-pointer bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
               type="file"
               accept="image/*"
-              onChange={handleImageChange} // Handle file selection
+              onChange={handleImageChange}
             />
           </div>
           <button
