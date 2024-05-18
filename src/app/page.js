@@ -6,6 +6,7 @@ import { TypewriterEffectSmooth } from "../Components/ui/typewriter-effect";
 import AnimatedText from "../Components/AnimatedText";
 import HomeContainer from "../Components/homecontainer";
 import { LampDemo } from "@/Components/ui/lamp";
+import Faq from "@/Components/ui/faq";
 
 export default function Home() {
   const words = [
@@ -60,13 +61,16 @@ export default function Home() {
                 Projects
               </Link>
               <Link
-                className="font-semibold sm:text-sm  transition-all ease-in-out duration-300 underline"
+                className="font-semibold sm:text-sm  transition-all ease-in-out duration-300 underline sm:hidden "
                 href="/articles"
               >
                 Create Articles
               </Link>
             </div>
           </div>
+        </div>
+        <div className="w-2/3 h-full p-5 md:w-full">
+          <Faq />
         </div>
       </main>
       <LampDemo />

@@ -155,7 +155,6 @@ export default function Navbar() {
       <div className="lg:hidden">
         <nav>
           <NavLink href="/" title="Home" className="mx-4" />
-          <NavLink href="/about" title="About" className="mx-4" />
           <NavLink href="/projects" title="Projects" className="mx-4" />
           <NavLink href="/contact" title="Contact" className="mx-4" />
           <NavLink href="/articles" title="Articles" className="mx-4" />
@@ -177,12 +176,7 @@ export default function Navbar() {
                 title="Home"
                 className=""
               />
-              <CustomMobileLink
-                toggle={handleChange}
-                href="/about"
-                title="About"
-                className=""
-              />
+
               <CustomMobileLink
                 toggle={handleChange}
                 href="/projects"
