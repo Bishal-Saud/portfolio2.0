@@ -41,3 +41,12 @@ export async function POST(req) {
     );
   }
 }
+
+export function GET() {
+  return NextResponse.json(
+    {
+      message: "This API endpoint only accepts POST requests.",
+    },
+    { status: 405 }
+  );
+}
