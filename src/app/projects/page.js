@@ -21,6 +21,24 @@ const projectData = [
     value: "all",
     projects: [
       {
+        img: "/images/projects/hamropasal.png",
+        alt: "Haamropasal",
+        link: "https://haamropasal.netlify.app/",
+        githubLink: "https://github.com/Bishal-Saud/portfolio2.0",
+      },
+      {
+        img: "/images/projects/lms.png",
+        alt: "LMS",
+        link: "https://learning-mangement.netlify.app/",
+        githubLink: "https://github.com/Bishal-Saud?tab=repositories",
+      },
+      {
+        img: "/images/projects/premiumHub.png",
+        alt: "premiumHub",
+        link: "https://premiumhub.netlify.app/",
+        githubLink: "https://github.com/Bishal-Saud/ECommerce_OnLy_HTLM_CSS_JS",
+      },
+      {
         img: "/images/projects/blog.png",
         alt: "Blog",
         link: "https://pwskillsblog.netlify.app/",
@@ -32,12 +50,7 @@ const projectData = [
         link: "https://imageshow.netlify.app/",
         githubLink: "https://github.com/Bishal-Saud",
       },
-      {
-        img: "/images/projects/lms.png",
-        alt: "LMS",
-        link: "https://learning-mangement.netlify.app/",
-        githubLink: "https://github.com/Bishal-Saud?tab=repositories",
-      },
+
       {
         img: "/images/projects/searchMovie.png",
         alt: "searchMovie",
@@ -57,12 +70,7 @@ const projectData = [
         link: "https://pokemonpic.netlify.app/",
         githubLink: "https://github.com/Bishal-Saud/pokedex",
       },
-      {
-        img: "/images/projects/premiumHub.png",
-        alt: "premiumHub",
-        link: "https://premiumhub.netlify.app/",
-        githubLink: "https://github.com/Bishal-Saud/ECommerce_OnLy_HTLM_CSS_JS",
-      },
+
       {
         img: "/images/projects/todo.png",
         alt: "todo",
@@ -99,6 +107,12 @@ const projectData = [
     label: "React",
     value: "react",
     projects: [
+      {
+        img: "/images/projects/hamropasal.png",
+        alt: "Haamropasal",
+        link: "https://haamropasal.netlify.app/",
+        githubLink: "https://github.com/Bishal-Saud/portfolio2.0",
+      },
       {
         img: "/images/projects/searchMovie.png",
         alt: "searchMovie",
