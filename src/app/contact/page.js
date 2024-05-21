@@ -11,6 +11,7 @@ import {
   DialogFooter,
   Button,
 } from "@material-tailwind/react";
+import { FRONTEND_URL } from "@/untill/frontEnd_Url";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -38,7 +39,7 @@ export default function Page() {
     setDialogMessage("Sending...");
 
     try {
-      const res = await fetch("/api/sendemail", {
+      const res = await fetch(`${FRONTEND_URL}/api/sendemail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
