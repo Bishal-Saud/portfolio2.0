@@ -37,26 +37,26 @@ export default function PricingCard({
 }) {
   return (
     <Card
-      color="transparent"
+      color="current"
       variant="gradient"
       className="w-full max-w-[20rem] p-8"
     >
       <CardHeader
         floated={false}
         shadow={false}
-        color="transparent"
+        color="current"
         className="m-0 mb-8 rounded-none border-b border-dark/10 pb-8 text-center"
       >
         <Typography
           variant="small"
-          color="transparent"
+          color="current"
           className="font-normal uppercase"
         >
           {type}
         </Typography>
         <Typography
           variant="h1"
-          color="transparent"
+          color="current"
           className="mt-6 flex justify-center gap-1 text-7xl font-normal"
         >
           <span className="mt-2 text-4xl">$</span>
@@ -110,8 +110,8 @@ export default function PricingCard({
       <CardFooter className="mt-12 p-0">
         <Button
           size="lg"
-          color="transparent"
-          className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100 bg-dark p-3"
+          color="current"
+          className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100  p-3"
           ripple={false}
           fullWidth={true}
         >

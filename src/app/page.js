@@ -5,7 +5,7 @@ import Link from "next/link";
 import { TypewriterEffectSmooth } from "../Components/ui/typewriter-effect";
 import AnimatedText from "../Components/AnimatedText";
 import HomeContainer from "../Components/homecontainer";
-import { LampDemo } from "@/Components/ui/lamp";
+
 import Faq from "@/Components/ui/faq";
 import PricingCard from "@/Components/ui/priceCard";
 import { Typography } from "@material-tailwind/react";
@@ -75,8 +75,8 @@ export default function Home() {
           <Faq />
         </div>
       </main>
-      <section className="flex text-center min-h-screen flex-col">
-        <Typography variant="h2" className="text-dark  my-10">
+      <section className="flex text-center min-h-screen flex-col my-10">
+        <Typography variant="h2" className="text-dark dark:text-light  my-10">
           Pricing
         </Typography>
         <div className=" flex items-center justify-center flex-wrap gap-5">
