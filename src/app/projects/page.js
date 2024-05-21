@@ -122,8 +122,8 @@ const projectData = [
   },
 
   {
-    label: "MERN Stack App",
-    value: "mern stack app",
+    label: "MERN/App",
+    value: "mern app",
     projects: [
       {
         img: "/images/projects/lms.png",
@@ -134,7 +134,7 @@ const projectData = [
     ],
   },
   {
-    label: "Next Js",
+    label: "Next-JS",
     value: "next js",
     projects: [
       {
@@ -153,7 +153,7 @@ const ProjectGallery = () => {
     <Tabs value="all">
       <TabsHeader>
         {projectData.map(({ label, value }) => (
-          <Tab key={value} value={value}>
+          <Tab key={value} value={value} className="sm:text-xs border-2 m-1">
             {label}
           </Tab>
         ))}
@@ -173,7 +173,7 @@ const ProjectGallery = () => {
                   scale: 1,
                   transition: { duration: 0.5, ease: "easeInOut" },
                 }}
-                className="rounded-lg flex items-center justify-between flex-col border-r-8 border-b-8 h-full border-dark dark:border-light shadow-sm dark:shadow-white cursor-pointer"
+                className=" rounded-lg flex items-center justify-between flex-col border-r-8 border-b-8 h-full border-dark dark:border-light shadow-sm dark:shadow-white cursor-pointer"
               >
                 <Image
                   className="h-40 w-full max-w-full rounded-lg object-cover object-center"

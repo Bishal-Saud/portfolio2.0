@@ -122,18 +122,29 @@ export default function ArticlesPage() {
             Add New Article
           </motion.button>
         </div>
-        <BentoGrid className="max-w-4xl mx-auto">
-          {articleData.map((article, i) => (
-            <BentoGridItem
-              key={article._id}
-              id={article._id}
-              title={article.title}
-              description={article.description}
-              icon={article?.image?.secure_url || demoImg}
-              className={i === 3 || i === 6 ? "xl:col-span-2" : ""}
-            />
-          ))}
-        </BentoGrid>
+
+        {articleData.length === 0 ? (
+          <>
+            <p>
+              Not Found <span className=" text-red-400">Try Again !</span>
+            </p>
+          </>
+        ) : (
+          <>
+            <BentoGrid className="max-w-4xl mx-auto">
+              {articleData.map((article, i) => (
+                <BentoGridItem
+                  key={article._id}
+                  id={article._id}
+                  title={article.title}
+                  description={article.description}
+                  icon={article?.image?.secure_url || demoImg}
+                  className={i === 3 || i === 6 ? "xl:col-span-2" : ""}
+                />
+              ))}
+            </BentoGrid>
+          </>
+        )}
       </main>
     </>
   );

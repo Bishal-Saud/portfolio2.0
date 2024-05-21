@@ -7,6 +7,8 @@ import AnimatedText from "../Components/AnimatedText";
 import HomeContainer from "../Components/homecontainer";
 import { LampDemo } from "@/Components/ui/lamp";
 import Faq from "@/Components/ui/faq";
+import PricingCard from "@/Components/ui/priceCard";
+import { Typography } from "@material-tailwind/react";
 
 export default function Home() {
   const words = [
@@ -62,9 +64,9 @@ export default function Home() {
               </Link>
               <Link
                 className="font-semibold sm:text-sm  transition-all ease-in-out duration-300 underline sm:hidden "
-                href="/articles"
+                href="/skills"
               >
-                Create Articles
+                Skills
               </Link>
             </div>
           </div>
@@ -73,7 +75,40 @@ export default function Home() {
           <Faq />
         </div>
       </main>
-      <LampDemo />
+      <section className="flex text-center min-h-screen flex-col">
+        <Typography variant="h2" className="text-dark  my-10">
+          Pricing
+        </Typography>
+        <div className=" flex items-center justify-center flex-wrap gap-5">
+          <PricingCard
+            type="Basic"
+            price={10}
+            date="day"
+            teamMembers={2}
+            components={15}
+            pages={15}
+            freeUpdates="1 month"
+          />
+          <PricingCard
+            type="Standard"
+            price={29}
+            date="day"
+            teamMembers={5}
+            components={40}
+            pages={40}
+            freeUpdates="1 year"
+          />
+          <PricingCard
+            type="Premium"
+            price={49}
+            date="day"
+            teamMembers={10}
+            components={70}
+            pages={60}
+            freeUpdates="2 years"
+          />
+        </div>
+      </section>
     </>
   );
 }

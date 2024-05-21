@@ -1,10 +1,16 @@
 "use client";
-"use client";
+import { useState } from "react";
 import AnimatedText from "@/Components/AnimatedText";
 import { GithubIcon, LinkedInIcon, TwitterIcon } from "@/Components/Icons";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import {
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from "@material-tailwind/react";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -14,6 +20,9 @@ export default function Page() {
     subject: "",
     message: "",
   });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,9 +33,12 @@ export default function Page() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setIsDialogOpen(true);
+    setDialogMessage("Sending...");
 
     try {
-      const res = await fetch("/api/sendEmail", {
+      const res = await fetch("/api/sendemail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +47,7 @@ export default function Page() {
       });
 
       if (res.ok) {
-        alert("Email sent successfully!");
+        setDialogMessage("Email sent successfully!");
         setFormData({
           name: "",
           phone: "",
@@ -44,11 +56,13 @@ export default function Page() {
           message: "",
         });
       } else {
-        alert("Failed to send email.");
+        setDialogMessage("Failed to send email.");
       }
     } catch (error) {
       console.error(error);
-      alert("Error sending email.");
+      setDialogMessage("Error sending email.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -60,8 +74,8 @@ export default function Page() {
       </Head>
       <main className="min-h-screen w-full text-dark dark:text-white ">
         <AnimatedText text="Contact Me" className="!text-4xl my-10" />
-        <div className="flex items-start justify-center gap-5 mt-10 w-full  h-full shadow-light shadow-2xl lg:flex-col lg:items-center lg:justify-center ">
-          <div className=" rounded-md flex flex-col items-center justify-end  gap-4  h-full w-1/2 lg:w-3/4">
+        <div className="flex items-start justify-center gap-5 mt-10 w-full h-full shadow-sm lg:flex-col lg:items-center lg:justify-center">
+          <div className="rounded-md flex flex-col items-center justify-end gap-4 h-full w-1/2 lg:w-3/4">
             <h2 className="text-4xl">
               Let&apos;s Work together,{" "}
               <span className="text-primary">Bishal</span>
@@ -69,36 +83,36 @@ export default function Page() {
             <div className="flex items-start justify-start flex-col pt-9">
               <p className="text-xl font-semibold">
                 Email:{" "}
-                <span className=" opacity-30 hover:opacity-100 ease-in-out duration-300 transition-opacity hover:text-primary">
+                <span className="opacity-30 hover:opacity-100 ease-in-out duration-300 transition-opacity hover:text-primary">
                   bishalsaud15@gmail.com
                 </span>
               </p>
               <p className="text-xl font-semibold">
                 Phone Number:{" "}
-                <span className=" opacity-30 hover:opacity-100 hover:text-secondary ease-in-out duration-300 transition-opacity">
+                <span className="opacity-30 hover:opacity-100 hover:text-secondary ease-in-out duration-300 transition-opacity">
                   +9779865742290
                 </span>
               </p>
             </div>
             <div className="p-6">
               <h2 className="text-2xl py-4 font-mono">Find out Here</h2>
-              <div className="flex gap-6  items-center justify-center">
+              <div className="flex gap-6 items-center justify-center">
                 <Link
-                  className=" text-4xl cursor-pointer"
+                  className="text-4xl cursor-pointer"
                   href="https://github.com/Bishal-Saud"
                   target="_blank"
                 >
                   <GithubIcon />
                 </Link>
                 <Link
-                  className=" text-4xl cursor-pointer"
+                  className="text-4xl cursor-pointer"
                   href="https://www.linkedin.com/in/bishal-saud-6a47ba235/"
                   target="_blank"
                 >
                   <LinkedInIcon />
                 </Link>
                 <Link
-                  className=" text-4xl cursor-pointer"
+                  className="text-4xl cursor-pointer"
                   href="https://twitter.com/Bishal_Saud05"
                   target="_blank"
                 >
@@ -109,7 +123,7 @@ export default function Page() {
           </div>
           <form
             onSubmit={handleSubmit}
-            className=" shadow-sm shadow-dark dark:shadow-light dark:text-white  text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%] md:w-[90%] lg:w-[60%]"
+            className="shadow-sm shadow-dark dark:shadow-light dark:text-white text-dark rounded-lg h-full p-10 flex flex-col gap-2 justify-center w-[35%] md:w-[90%] lg:w-[60%]"
           >
             <div className="your name flex gap-5 xl:flex-col">
               <div className="name flex flex-col">
@@ -121,6 +135,7 @@ export default function Page() {
                   value={formData.name}
                   onChange={handleChange}
                   className="p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2 rounded-sm"
+                  required
                   type="text"
                   placeholder="Enter your name"
                 />
@@ -136,6 +151,7 @@ export default function Page() {
                   className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
                   type="text"
                   placeholder="Enter your number"
+                  required
                 />
               </div>
             </div>
@@ -149,6 +165,7 @@ export default function Page() {
                 value={formData.email}
                 onChange={handleChange}
                 className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
+                required
                 type="text"
                 placeholder="Enter your email"
               />
@@ -162,6 +179,7 @@ export default function Page() {
                 value={formData.subject}
                 onChange={handleChange}
                 className="border border-dark p-2 bg-light shadow-dark dark:bg-dark dark:shadow-light outline-none border-none shadow-sm mt-2"
+                required
                 type="text"
                 placeholder="Enter your subject"
               />
@@ -175,17 +193,37 @@ export default function Page() {
                 value={formData.message}
                 onChange={handleChange}
                 className="border border-dark h-28 resize-none p-2 bg-light dark:bg-dark dark:shadow-light shadow-dark outline-none border-none shadow-sm mt-2"
+                required
                 placeholder="Message"
               />
             </div>
             <button
               type="submit"
-              className="shadow-sm hover:shadow-xl transition-all ease-out duration-300  shadow-dark dark:bg-light dark:text-dark dark:shadow-light mt-4 p-2 text-xl font-semibold"
+              className="shadow-sm hover:shadow-xl transition-all ease-out duration-300 shadow-dark dark:bg-light dark:text-dark dark:shadow-light mt-4 p-2 text-xl font-semibold"
             >
               Submit
             </button>
           </form>
         </div>
+
+        <Dialog
+          open={isDialogOpen}
+          handler={setIsDialogOpen}
+          className="flex items-center justify-center relative  flex-wrap"
+        >
+          <DialogHeader>Notification</DialogHeader>
+          <DialogBody>{isLoading ? "Sending..." : dialogMessage}</DialogBody>
+          <DialogFooter>
+            <Button
+              variant="outlined"
+              color="black"
+              onClick={() => setIsDialogOpen(false)}
+              disabled={isLoading}
+            >
+              Close
+            </Button>
+          </DialogFooter>
+        </Dialog>
       </main>
     </>
   );

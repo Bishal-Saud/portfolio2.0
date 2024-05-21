@@ -83,7 +83,7 @@ export default function Navbar() {
   };
   return (
     <header
-      className="relative lg:border-none lg:shadow-none  border-b-2 shadow-[#9999] shadow-sm flex justify-between xl:justify-between px-5 items-center text-dark dark:text-light
+      className="relative lg:border-none lg:shadow-none  shadow-[#9999] shadow-sm flex justify-between xl:justify-between px-5 items-center text-dark dark:text-light
      "
     >
       <button
