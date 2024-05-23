@@ -10,6 +10,8 @@ import Faq from "@/Components/ui/faq";
 import PricingCard from "@/Components/ui/priceCard";
 import { Typography } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 export default function Home() {
   const words = [
     {
