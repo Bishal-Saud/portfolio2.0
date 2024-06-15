@@ -148,7 +148,7 @@ const projectData = [
     ],
   },
   {
-    label: "Next-JS",
+    label: "Next JS",
     value: "next js",
     projects: [
       {
@@ -165,7 +165,7 @@ const projectData = [
 const ProjectGallery = () => {
   return (
     <Tabs value="all">
-      <TabsHeader>
+      <TabsHeader className="flex sm:flex-col 2xl:flex-row xl:flex-row md:flex-row">
         {projectData.map(({ label, value }) => (
           <Tab key={value} value={value} className="sm:text-xs border-2 m-1">
             {label}
