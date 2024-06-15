@@ -1,22 +1,35 @@
 import { NextResponse } from "next/server";
 import { Article } from "../../../model/article_model.js";
 import mongoose from "mongoose";
-await mongoose.connect(process.env.DB_URL);
+let isConnected;
+
+async function connectToDatabase() {
+  if (!isConnected) {
+    try {
+      await mongoose.connect(process.env.DB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      isConnected = true;
+      console.log("Database connected successfully");
+    } catch (error) {
+      console.error("Database connection error:", error);
+      throw new Error("Database connection failed");
+    }
+  }
+}
 export async function GET() {
-  let data = [];
+  await connectToDatabase();
+
   try {
-    data = await Article.find();
+    const data = await Article.find();
+    return NextResponse.json({ success: true, data: data }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: error.message },
       { status: 500 }
     );
   }
-
-  return NextResponse.json(
-    { success: "working fine ", data: data },
-    { status: 200 }
-  );
 }
 
 // // export async function POST(req) {
