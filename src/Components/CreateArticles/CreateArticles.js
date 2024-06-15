@@ -8,19 +8,29 @@ export default function CreateArticle() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [showCreateArticle, setShowCreateArticle] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef();
 
   const articleDetails = async (e) => {
     e.preventDefault();
+
+    if (!image) {
+      alert("Please upload an image.");
+      return;
+    }
+
     const formData = new FormData(formRef.current);
     formData.append("file", image);
     formData.append("title", title);
     formData.append("description", description);
 
     try {
+      setIsLoading(true);
       const res = await uploadPhoto(formData);
+      setIsLoading(false);
       if (res && res.success) {
         alert(res.message);
+        setShowCreateArticle(false); // Close the modal on success
       } else {
         alert(res ? res.message : "Failed to upload image. Please try again.");
       }
@@ -38,7 +48,7 @@ export default function CreateArticle() {
   const handleCrossIconClick = () => {
     setShowCreateArticle(false);
   };
-
+  if (!showCreateArticle) return null; // Don't render the modal if it's not supposed to be shown
   return (
     <div className="z-10 flex items-center justify-center fixed bg-[#00000043] text-dark dark:text-light w-full h-full top-0">
       <div className="flex items-center justify-center">
