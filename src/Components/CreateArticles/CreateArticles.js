@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import uploadPhoto from "@/Actions/uploadAction";
 import CrossIcon from "../Icons";
 
-export default function CreateArticle() {
+export default function CreateArticle({ onArticleCreated }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -31,6 +31,7 @@ export default function CreateArticle() {
       if (res && res.success) {
         alert(res.message);
         setShowCreateArticle(false); // Close the modal on success
+        onArticleCreated();
       } else {
         alert(res ? res.message : "Failed to upload image. Please try again.");
       }

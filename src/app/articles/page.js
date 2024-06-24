@@ -85,12 +85,12 @@ export default function ArticlesPage() {
   const toggleCreateArticle = () => {
     setShowCreateArticle(!showCreateArticle);
   };
+  const fetchArticles = async () => {
+    const articles = await fetchArticleData();
+    setArticleData(articles);
+  };
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      const articles = await fetchArticleData();
-      setArticleData(articles);
-    };
     fetchArticles();
   }, []);
 

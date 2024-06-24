@@ -32,9 +32,17 @@ async function savePhotosToLocal(formData) {
 }
 
 async function uploadPhotosToCloudinary(newFiles) {
-  return cloudinary.v2.uploader.upload(newFiles.filePath, {
-    folder: "nextjs_upload",
-  });
+  try {
+    return await cloudinary.v2.uploader.upload(newFiles.filePath, {
+      folder: "nextjs_upload",
+    });
+  } catch (error) {
+    console.error("Error uploading to Cloudinary:", error.message);
+    throw new Error("Cloudinary upload failed");
+  } finally {
+    // Clean up the local file
+    await fs.unlink(newFiles.filePath);
+  }
 }
 
 export default async function uploadPhoto(formData) {
