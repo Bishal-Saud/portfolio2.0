@@ -14,6 +14,7 @@ import {
 } from "./Icons";
 import { useState } from "react";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
+// import resume from "../../public/images/personal/v4_Bishal_resume.pdf";
 
 const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   const router = useRouter();
@@ -108,11 +109,11 @@ export default function Navbar() {
       </button>
       <div className="lg:hidden border rounded-full border-black flex items-center justify-center p-2 bg-dark text-light text-center font-semibold h-16 w-16  hover:bg-light  hover:border-dark  hover:text-dark dark:bg-light dark:text-dark  dark:hover:border-light dark:hover:bg-dark dark:hover:text-light transition-all duration-700 ease-in-out mt-1">
         <a
-          href="../../public/images/personal/resume.pdf"
-          download="resume.pdf"
+          href="/images/personal/v4_Bishal_resume.pdf"
+          download="v4_Bishal_resume.pdf"
           className=""
         >
-          CV{" "}
+          CV
         </a>
       </div>
       <div className="lg:hidden absolute top-20 left-[2.5rem]">
@@ -156,9 +157,9 @@ export default function Navbar() {
         <nav>
           <NavLink href="/" title="Home" className="mx-4" />
           <NavLink href="/projects" title="Projects" className="mx-4" />
+          <NavLink href="/skills" title="Skills" className="ml-4" />
           <NavLink href="/contact" title="Contact" className="mx-4" />
           <NavLink href="/articles" title="Articles" className="mx-4" />
-          <NavLink href="/skills" title="Skills" className="ml-4" />
         </nav>
       </div>
 
@@ -185,6 +186,12 @@ export default function Navbar() {
               />
               <CustomMobileLink
                 toggle={handleChange}
+                href="/skills"
+                title="Skills"
+                className=""
+              />
+              <CustomMobileLink
+                toggle={handleChange}
                 href="/contact"
                 title="Contact"
                 className=""
@@ -193,12 +200,6 @@ export default function Navbar() {
                 toggle={handleChange}
                 href="/articles"
                 title="Articles"
-                className=""
-              />
-              <CustomMobileLink
-                toggle={handleChange}
-                href="/skills"
-                title="Skills"
                 className=""
               />
             </nav>

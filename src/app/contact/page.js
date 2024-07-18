@@ -71,7 +71,10 @@ export default function Page() {
     <>
       <Head>
         <title>Bishal \ Contact Page</title>
-        <meta name="Contact page" content="any description" />
+        <meta
+          name="Contact page"
+          content="Get in touch with Bishal Saud, a skilled Next.js and MERN stack developer. Whether you have questions, project inquiries, or collaboration opportunities, reach out to connect and discuss innovative web development solutions."
+        />
       </Head>
       <main className="min-h-screen w-full text-dark dark:text-white ">
         <AnimatedText text="Contact Me" className="!text-4xl my-10" />

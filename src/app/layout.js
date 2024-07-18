@@ -13,7 +13,7 @@ export const metadata = {
   title: "Bishal Saud - Full Stack Web Developer",
   description: "Personal Portfolio Showcase !",
   icons: {
-    icon: "../../public/images/personal/logoicon.png",
+    icon: "/images/personal/logoicon.png",
   },
 };
 

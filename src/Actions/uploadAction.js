@@ -12,7 +12,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-async function savePhotosToLocal(formData) {
+export async function savePhotosToLocal(formData) {
   const file = formData.get("file");
 
   if (!file) {

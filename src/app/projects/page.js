@@ -33,6 +33,13 @@ const projectData = [
         githubLink: "https://github.com/Bishal-Saud?tab=repositories",
       },
       {
+        img: "/images/projects/moviesHomepage.png",
+        alt: "MoviesHomePage Task",
+        link: "https://movieshomepage.netlify.app/",
+        githubLink:
+          "https://github.com/Bishal-Saud/Movie_Streaming_Platform_Homepage",
+      },
+      {
         img: "/images/projects/premiumHub.png",
         alt: "premiumHub",
         link: "https://premiumhub.netlify.app/",
@@ -112,6 +119,13 @@ const projectData = [
         alt: "Haamropasal",
         link: "https://haamropasal.netlify.app/",
         githubLink: "https://github.com/Bishal-Saud/portfolio2.0",
+      },
+      {
+        img: "/images/projects/moviesHomepage.png",
+        alt: "MoviesHomePage Task",
+        link: "https://movieshomepage.netlify.app/",
+        githubLink:
+          "https://github.com/Bishal-Saud/Movie_Streaming_Platform_Homepage",
       },
       {
         img: "/images/projects/searchMovie.png",
@@ -223,7 +237,10 @@ export default function Page() {
     <>
       <Head>
         <title>Bishal \ Projects Page</title>
-        <meta name="projects page" content="any description" />
+        <meta
+          name="projects page"
+          content="Explore the diverse range of projects developed by Bishal Saud, showcasing expertise in Next.js and the MERN stack. From innovative web applications to responsive user interfaces, discover how cutting-edge technologies are utilized to create impactful solutions."
+        />
       </Head>
       <main className="w-full min-h-screen flex items-center flex-col gap-4 mb-10 text-dark dark:text-light">
         <div className="w-full flex flex-col justify-center">

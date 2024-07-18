@@ -7,7 +7,7 @@ import AnimatedText from "../Components/AnimatedText";
 import HomeContainer from "../Components/homecontainer";
 
 import Faq from "@/Components/ui/faq";
-import PricingCard from "@/Components/ui/priceCard";
+// import PricingCard from "@/Components/ui/priceCard";
 import { Typography } from "@material-tailwind/react";
 
 export default function Home() {
@@ -27,7 +27,10 @@ export default function Home() {
     <>
       <Head>
         <title>Bishal Saud \ Home Page</title>
-        <meta name="home" content="Bishal saud Home page" />
+        <meta
+          name="home"
+          content="Welcome to the home page of Bishal Saud, a proficient Next.js and MERN stack developer. Discover my portfolio, skills, and the innovative web development projects I have worked on."
+        />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center my-10 lg:mb-5 text-dark dark:text-light">
         <div className="flex  border 2xl:gap-5 xl:gap-2 rounded-xl 2xl:p-5 h-1/3 shadow-xl xl:p-1 2xl:w-2/3  xl:w-3/4 md:w-full justify-center items-center 2xl:flex-row xl:flex-row lg:flex-col md:border-none ">
@@ -75,40 +78,12 @@ export default function Home() {
           <Faq />
         </div>
       </main>
-      <section className="flex text-center min-h-screen flex-col my-10">
+      {/* <section className="flex text-center min-h-screen flex-col my-10">
         <Typography variant="h2" className="text-dark dark:text-light  my-10">
           Pricing
         </Typography>
-        <div className=" flex items-center justify-center flex-wrap gap-5">
-          <PricingCard
-            type="Basic"
-            price={10}
-            date="day"
-            teamMembers={2}
-            components={15}
-            pages={15}
-            freeUpdates="1 month"
-          />
-          <PricingCard
-            type="Standard"
-            price={29}
-            date="day"
-            teamMembers={5}
-            components={40}
-            pages={40}
-            freeUpdates="1 year"
-          />
-          <PricingCard
-            type="Premium"
-            price={49}
-            date="day"
-            teamMembers={10}
-            components={70}
-            pages={60}
-            freeUpdates="2 years"
-          />
-        </div>
-      </section>
+        <div className=" flex items-center justify-center flex-wrap gap-5"></div>
+      </section> */}
     </>
   );
 }

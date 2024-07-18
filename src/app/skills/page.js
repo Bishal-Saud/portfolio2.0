@@ -12,6 +12,8 @@ import tailwindImg from "../../../public/images/Skills/tailwindcss.png";
 import expressImg from "../../../public/images/Skills/express.png";
 import reduxToolkit from "../../../public/images/Skills/reduxToolkit.jpg";
 import nextJs from "../../../public/images/Skills/nextJS.png";
+import github from "../../../public/images/Skills/github.jpg";
+import npm from "../../../public/images/Skills/npm.webp";
 import Experience from "@/Components/Experience";
 
 const SkillBox = ({ img, title, percentage }) => {
@@ -31,7 +33,10 @@ export default function Page() {
     <>
       <Head>
         <title>Bishal \ Skills Page</title>
-        <meta name="skills page" content="any description" />
+        <meta
+          name="skills page"
+          content="Discover the professional skills of Bishal Saud, an expert in Next.js and MERN stack development. Explore detailed insights into React, MongoDB, Express.js, Node.js, and how these technologies are leveraged to build robust and scalable web applications."
+        />
       </Head>
       <main className="min-h-screen w-full text-dark dark:text-light ">
         <AnimatedText
@@ -58,6 +63,8 @@ export default function Page() {
               <SkillBox img={tailwindImg} title="TailwindCSS" percentage={60} />
               <SkillBox img={expressImg} title="EXPRESS" percentage={66} />
               <SkillBox img={nextJs} title="NEXT JS" percentage={70} />
+              <SkillBox img={npm} title="NPM" percentage={60} />
+              <SkillBox img={github} title="github" percentage={70} />
               <SkillBox
                 img={reduxToolkit}
                 title="Redux Toolkit"
